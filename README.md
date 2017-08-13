@@ -7,14 +7,16 @@ The domain name flynsite.org has been reserved as an entry point for all sites. 
 
 # Try it
 
-# Clone it
+# Deploy it
 
 # Architecture
 ## StarUml diagram
 ## Front end
 ## Server
 ## Flickr account details
-# Contributing
+# Contribute (Development)
 ## Signup
 ## 
-# Pull Requests
+## Pull Requests
+# Contribute $
+This is a none profit effort but it is not free of costs. In an effort to sustain the development and longevity of this effort we ask you to contribute to a common fund. Out hope is that a large part of the effort and cost that goes into maintaining your current site will be offset and some of that savings will be contributed to this common effort. More details to come. 
