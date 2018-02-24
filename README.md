@@ -6,23 +6,32 @@ The object is to pool resources and to provide a best of breed web experience fo
 The domain name flynsite.org has been reserved as an entry point for all sites. Each site will have it's own 'tenancy' and will be maintained by the local club members. This is 'your' site and our job is create an easy to manage and maintain site not tell you how and what to put there. 
 
 # Try it (Bash Command Line) 
-* Install node.js
-  https://nodejs.org/en/
-* Install [mongo DB:
-https://www.mongodb.com/cloud/atlas/lp/general?jmp=search&utm_source=google&utm_campaign=Americas-US-MongoDB-to-Atlas-Brand-Alpha&utm_keyword=mongodb&utm_device=c&utm_network=g&utm_medium=cpc&utm_creative=248596149315&utm_matchtype=e&_bt=248596149315&_bk=mongodb&_bm=e&_bn=g&gclid=CjwKCAiAt8TUBRAKEiwAOI9pAO7Sq6qEt0DrNlnkDTj2TssYyjGsQsMkHmfjuwm6CQpYVs5AOmy6fBoCenoQAvD_BwE]
+* Install [node.js](https://nodejs.org/en/)
+* Install [MongoDB](https://www.mongodb.com/cloud/atlas/lp/general?jmp=search&utm_source=google&utm_campaign=Americas-US-MongoDB-to-Atlas-Brand-Alpha&utm_keyword=mongodb&utm_device=c&utm_network=g&utm_medium=cpc&utm_creative=248596149315&utm_matchtype=e&_bt=248596149315&_bk=mongodb&_bm=e&_bn=g&gclid=CjwKCAiAt8TUBRAKEiwAOI9pAO7Sq6qEt0DrNlnkDTj2TssYyjGsQsMkHmfjuwm6CQpYVs5AOmy6fBoCenoQAvD_BwE)
 * Clone this site
+
 git clone https://github.com/temecom/fly-n-site.git
 
 * Prepare UI application and services
  * Service
-cd fly-n-site/fly-n-site-master/flyn-site-service
+ 
+``` bash 
+cd fly-n-site/fly-n-site-master/fly-n-site-service
 npm install
 cd app
 node index &
+```
+
  * UI App
-cd fly-n-site/fly-n-site-master/flyn-site-ui
+ 
+``` bash 
+cd fly-n-site/fly-n-site-master/fly-n-site-ui
 npm install
-ember serve --proxy=http://localhost:9000
+ember serve --proxy=http://localhost:3000
+```
+* Open the site at: 
+[Fly'n Site](http://localhost:4200)
+
 # Deploy it
 
 # Architecture
