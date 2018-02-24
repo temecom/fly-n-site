@@ -1,0 +1,20 @@
+
+if (window.CVO) {
+  CVO.log("<< H[999999999] E[1168256606:]");
+}
+else if (window.$CVO) {
+  $CVO.INFO("<< H[999999999] E[1168256606:]");
+}
+
+if (window.$CVO.run) {
+  $CVO.run( 'trackEventDone', "2" );
+}
+else if (window.$CVO['getVersion']) {
+  $CVO.push([ 'trackEventDone', "2" ]);
+}
+if (window.$CVO.run) {
+  $CVO.run( 'stampTids', 1501441577 );
+}
+else {
+  $CVO.push([ 'stampTids', 1501441577 ]);
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)https://img1.wsimg.com/mya/notifications/cache.html -->
+<html data-ember-extension="1"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  </head>
+  <body>
+    <script type="text/javascript">
+    (function(window, sessionStorage){
+      var Key = 'GD_MYA_Notifications';
+      var SetCommand = 'Notification_Set';
+      var GetCommand = 'Notification_Get';
+      var ReqCommand = 'Notification_Req';
+      var header = 'notify:';
+
+      var setNotes = function(setObj) {
+        sessionStorage.setItem(Key, JSON.stringify(setObj));
+      };
+
+      var getNotes = function() {
+        var obj = sessionStorage.getItem(Key);
+        if (obj) {
+          return JSON.parse(obj);
+        }
+        return null;
+      };
+      
+      var deserializeMessage = function(msg){
+        // handles IE9+ postmessage events for notifications 
+        if(typeof(msg) === 'object'){
+          return msg;
+        }
+        else if(typeof(msg) === 'string' && msg.substr(0, header.length) === header ){
+          try{
+            var result = JSON.parse(msg.substr(header.length));
+            return result;
+          }catch(err){
+            // err
+          }
+        }
+        return null;
+      }
+      
+      var postMessage = function(obj){
+        if(typeof(obj) !== 'object'){
+          return false;
+        }
+        var msg;
+        try{
+          msg = JSON.stringify(obj);
+        }catch(err){
+          // err
+          return false;
+        }
+        window.parent.postMessage(header + msg, '*');
+        return true;
+      }
+
+      var postNotifications = function() {
+        var notes = getNotes();
+        var msg = {type: GetCommand, payload: null};
+        if (notes) {
+          msg.payload = notes;
+        }
+        postMessage(msg);
+      };
+
+      var receiveMessage = function(event) {
+        var data = deserializeMessage(event.data);
+        if (data !== null && data.type) {
+          if (data.type === SetCommand) {
+            setNotes(data.payload);
+          }
+          if (data.type === ReqCommand) {
+            postNotifications();
+          }
+        }
+      };
+
+      window.addEventListener('message', receiveMessage, false);
+
+      if(window.parent){
+        // initialization
+        postNotifications();
+      }
+
+    }(window, window.sessionStorage))
+    </script>
+  
+</body></html>

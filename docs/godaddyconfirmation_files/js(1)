@@ -1,0 +1,31 @@
+(function() {
+try {
+    (function(){
+/*
+//pixel.mathtag.com/event/img?mt_id=1196683&mt_adid=191416&mt_exem=&mt_excl=&v1=&v2=&v3=&s1=&s2=&s3=
+*/
+
+  var mm_ri = String( Math.random() );
+  mm_ri = mm_ri.replace( /0\./g,'' );
+
+  var mm_protocol = location.protocol;
+  if ( mm_protocol != 'http:' && mm_protocol != 'https:' ){ mm_protocol = 'http:'; }
+
+  var mm_el0 = document.createElement('img');
+  var url0 = '//pixel.mathtag.com/event/img?mt_id=1196683&mt_adid=191416&mt_exem=&mt_excl=&v1=&v2=&v3=&s1=&s2=&s3=&mt_uuid=a14c5931-001b-4000-8f9d-eb9f7e540db8';
+  url0 = url0.replace("\[RANDOM_NUMBER\]", mm_ri);
+  mm_el0.width = 1;
+  mm_el0.height = 1;
+  mm_el0.style.display = 'none';
+  mm_el0.src = url0;
+  document.body.appendChild(mm_el0);
+
+
+})();
+
+}
+catch(ex)
+{
+   document.createElement("img").src="//pixel.mathtag.com/error/img?error_domain=wrap&what="+encodeURIComponent(ex.message);
+}
+})();
