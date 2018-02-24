@@ -1,0 +1,30 @@
+site:
+  greeting: "Welcome to Fly'n Site"
+  title: "Fly'n Site"
+  information: "More information about Fly'n Site"
+  home: "Home"
+  more: "More"
+  list: "List"
+  clubs: "Clubs"
+  sites: "Flying Sites"
+  members: "Pilots"
+forms:
+  common:
+    name: "Name"
+    email: "E-Mail"
+    webSiteUrl: "Web Site URL"
+    id: "ID"
+    facebookPage: "Facebook Page"
+    address:
+      title: "Mailing Address"
+      street: "Street"
+      city: "City"
+      postalCode: "PostalCode"
+      region: "Region"
+      country: "Country"
+user:
+  save: "Save"
+  new: "New"
+  edit: "Edit"
+administration:
+  title: "Administration"

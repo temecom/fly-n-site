@@ -1,0 +1,49 @@
+<div class="container">
+       	<div class="panel">
+       	<div class="panel-header">
+       	<h1>{{t "administration.title"}}</h1>
+       	</div>
+        <main class="col py-5">
+            <div class="row">
+                <div class="col">
+                    <ul class="nav nav-tabs small" role="tablist">
+                        <li class="nav-item">{{#link-to "administration.clubs"}}<a class="nav-link text-uppercase active" data-toggle="tab" href="#tab1" role="tab">{{t "site.clubs"}}</a>{{/link-to}}</li>
+                        <li class="nav-item ml-auto"><a class="nav-link text-uppercase" data-toggle="tab" href="#tab2" role="tab">{{t "site.sites"}}</a></li>
+                        <li class="nav-item"><a class="nav-link text-uppercase" data-toggle="tab" href="#tab3" role="tab">{{t "site.members"}}</a></li>
+                    </ul>
+                    <div class="tab-content py-3">
+                        
+                        <div class="tab-pane active" id="tab1" role="tabpanel">
+                            <div class="card border-primary mb-3">
+                                <div class="card-body">
+                                    <!-- All other site content show up here -->
+                                    {{outlet}}
+                                </div>
+                            </div>
+                         </div>
+                         
+                        <div class="tab-pane" id="tab2" role="tabpanel">
+                           <div class="card border-primary mb-3">
+                                <div class="card-body">
+                                    <!-- All other site content show up here -->
+                                    {{outlet}}
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <div class="tab-pane" id="tab3" role="tabpanel">
+ 							<div class="card border-primary mb-3">
+                                <div class="card-body">
+                                    <!-- All other site content show up here -->
+                                    {{outlet}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </main>
+        </div>
+</div>
+

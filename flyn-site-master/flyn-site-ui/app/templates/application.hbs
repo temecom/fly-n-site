@@ -1,0 +1,74 @@
+<nav class="navbar navbar-light navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href="#">Menu</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a href="#" class="nav-link">Link</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Link</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Link</a></li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a href="#modal1" data-toggle="modal" class="nav-link">Modal</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="fly-n-site-header" id="header">
+	<div class="row">
+		<div class='fly-n-site-left-image'></div>
+		<div class="fly-n-site-center">
+		    <h1 class="display-3">{{t "site.title"}}</h1>
+		    <p>{{t 'site.greeting'}}</p>
+		    <p class="lead">
+		        <a class="btn btn-outline-secondary btn-lg" href="#" role="button">{{t "site.information"}}</a>
+		    </p>
+	    </div>
+	        <div class='fly-n-site-right-image'></div>
+    </div>
+
+</div>
+
+<div class="container" id="content">
+    <div class="row h-100 mt-5">
+ 		{{outlet}}
+    </div>
+</div>
+<footer class="bg-dark text-white py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6 pl-0">
+                <ul class="nav flex-column">
+                    <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Team</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 col-sm-6 pl-0">
+                <ul class="nav flex-column">
+                    <li class="nav-item"><a href="#" class="nav-link">More</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Support</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Legal</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4 ml-auto text-right">
+                <small class="text-uppercase">Connect on social media</small>
+                <ul class="nav justify-content-end">
+                    <li class="nav-item"><a href="#" class="nav-link pr-0"><i class="fa fa-pinterest fa-lg"></i></a></li>
+                    <li class="nav-item"><a href="#" class="nav-link pr-0"><i class="fa fa-twitter fa-lg"></i></a></li>
+                    <li class="nav-item"><a href="#" class="nav-link pr-0"><i class="fa fa-instagram fa-lg"></i></a></li>
+                    <li class="nav-item"><a href="#" class="nav-link pr-0"><i class="fa fa-facebook fa-lg"></i></a></li>
+                    <li class="nav-item"><a href="#" class="nav-link pr-0"><i class="fa fa-skype fa-lg"></i></a></li>
+                </ul>
+            </div>
+            <div class="col-12 text-right small">
+                @2017 Company Name
+            </div>
+        </div>
+    </div>
+</footer>
+

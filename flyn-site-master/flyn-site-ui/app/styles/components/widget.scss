@@ -1,0 +1,18 @@
+/*
+* Classes for the system display widgets
+*/ 
+.widget-frame {
+	@extend .card;
+}
+
+.widget-header {
+	@extend .card-header; 
+}
+
+.widget-body {
+	@extend .card-body;
+}
+
+.widget-footer {
+	@extend .card-footer;
+}

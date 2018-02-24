@@ -1,0 +1,23 @@
+.fly-n-site-header {
+	@extend .jumbotron;
+}
+
+.fly-n-site-left-image {
+	@extend .col-lg-4;
+	background-image: url('/images/glider_in_sun.jpg');
+	background-size: 400px;
+	background-repeat: no-repeat;
+
+}
+
+.fly-n-site-right-image {
+	@extend  .col-lg-4;
+	background-image: url('/images/hawk_in_sun.jpg');
+	background-size: 400px;
+	background-repeat: no-repeat;
+
+}
+
+.fly-n-site-center {
+	@extend .col-lg-4;
+}

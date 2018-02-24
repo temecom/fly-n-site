@@ -1,0 +1,6 @@
+[ 
+	{"type": "country","name":"United States","code":"US","languages":"en-us"},
+	{"type": "country","name":"Canada","code":"CDN","languages":"en-uk"},
+	{"type": "country","name":"Mexico","code":"MX","languages":"es-mx"},
+	{"type": "country","name":"Great Britain","code":"UK","languages":"en-uk"}
+]

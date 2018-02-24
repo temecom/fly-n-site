@@ -1,0 +1,31 @@
+{
+  "name": "fly-n-site",
+  "version": "1.0.0",
+  "description": "The node service for Fly-n-sites",
+  "main": "app/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/temecom/fly-n-site.git"
+  },
+  "keywords": [
+    "fly-n",
+    "hang",
+    "gliding",
+    "paragliding"
+  ],
+  "author": "Christopher C. Smith <csmith@temecom.net> (http://www.temecom.net/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/temecom/fly-n-site/issues"
+  },
+  "homepage": "https://github.com/temecom/fly-n-site#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.15.4",
+    "mongoose": "^4.11.7",
+    "uuid": "^3.1.0"
+  }
+}
