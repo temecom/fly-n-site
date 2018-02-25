@@ -16,6 +16,7 @@ Router.map(function() {
     this.route('clubs');
     this.route('sites');
   });
+  this.route('stories');
 });
 
 export default Router;

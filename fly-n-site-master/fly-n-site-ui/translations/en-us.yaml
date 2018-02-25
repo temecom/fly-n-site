@@ -8,6 +8,20 @@ site:
   clubs: "Clubs"
   sites: "Flying Sites"
   members: "Pilots"
+  weather: "Weather"
+  administration: "Administration"
+  overview: 
+    title: "Site Summary"
+    description: "Overview of the site" 
+  calendar:
+    title: "Calendar"
+    description: "Upcoming Events"
+  fly-n-stories:
+    title: "Fly'n Stories"
+    description: "Latest flying adventure and stories"
+  topFlights: 
+    title: "Top Flights"
+    description: "Notable flights this week"
 forms:
   common:
     name: "Name"
