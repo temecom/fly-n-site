@@ -11,7 +11,9 @@
 */
 
 import DS from 'ember-data';
-export default DS.Model.extend({
+import FlynSiteEntity from '../models/flyn-site-entity';
+
+export default FlynSiteEntity.extend({
 
     joined: DS.attr('date'),
     renewal: DS.attr('date'),

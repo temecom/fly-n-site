@@ -1,63 +1,84 @@
-
-<div class="modal fade" id="clubModal" tabindex="-1" role="dialog"
-	aria-labelledby="clubModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModal3Label">{{model.club.name}}</h5>
-				<button type="button" class="close" data-dismiss="modal"
-					aria-label={{t "forms.close"}}>
-					<span aria-hidden="true">&times;</span>
-				</button>
+<!-- The club editor modal dialog -->
+	<div class="card">
+	<div class="card-header">
+		<h5>{{model.club.name}}</h5>
+			<div class="btn-group collapsed">
+				<button type="button" class="btn btn-secondary"
+					data-dismiss="modal">{{t "user.close"}}</button>
+				<button id="saveButton" 
+					class="btn btn-primary"
+					{{action "save"}} data-dismiss="modal" >{{t "user.save"}}</button>
+								
 			</div>
-			<div class="modal-body">
-				<form>
-					<div class="form-group row">
-						<label for="inputId" class="col-sm-2 col-form-label">{{t
-							"forms.common.id"}}</label>
-						<div class="col-sm-10">{{input class="form-control"
-							id="inputId" value=model.club.id placeholder=(t
-							"forms.common.id") disabled=true}}</div>
-					</div>
-					<div class="form-group row">
-						<label for="inputName" class="col-sm-2 col-form-label">{{t
-							"forms.common.name"}}</label>
-						<div class="col-sm-10">{{input class="form-control"
-							id="inputName" value=model.club.name placeholder=(t
-							"forms.common.name")}}</div>
-					</div>
-					<div class="form-group row">
-						<label for="inputEmail" class="col-sm-2 col-form-label">{{t
-							"forms.common.email"}}</label>
-						<div class="col-sm-10">{{input class="form-control"
-							id="inputEmail" value=model.club.emailAddress placeholder=(t
-							"forms.common.email")}}</div>
-					</div>
-					<div class="form-group row">
-						<label for="inputWebUrl" class="col-sm-2 col-form-label">{{t
-							"forms.common.webSiteUrl"}}</label>
-						<div class="col-sm-10">{{input type="text"
-							class="form-control" id="inputWebUrl" value=model.club.webSiteUrl
-							placeholder=(t "forms.common.webSiteUrl")}}</div>
-					</div>
-					<div class="form-group row">
-						<label for="inputFacebookPage" class="col-sm-2 col-form-label">{{t
-							"forms.common.facebookPage"}}</label>
-						<div class="col-sm-10">{{input class="form-control"
-							id="inputFacebookPage" value=model.club.facebookPage
-							placeholder=(t "forms.common.facebookPage")}}</div>
-					</div>
-
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-dismiss="modal">Close</button>
-						<button id="saveButton" class="btn btn-primary"
-							{{action "save"}} >{{t "user.save"}}</button>
-					</div>
-				</form>
-			</div>
+		</div>
+	</div>
+{{#bs-accordion as |acc|}}	
+	{{#acc.item value="1" title=(t "forms.common.identity")}}
+	<div class="card" id="clubModal">
+		<div class="card-body">{{#bs-form formLayout=formLayout
+			model=model.club 
+			onSubmit=(action "save") as |form|}} 
+				{{form.element
+					property="id" 
+					placeholder=(t "forms.common.id") 
+					label=(t "forms.common.id")
+				}} 
+				{{form.element 
+					property="name" 
+					placeholder=(t "forms.common.name") 
+					label=(t "forms.common.name")
+				}} 
+				{{form.element
+					property="emailAddress" 
+					placeholder=(t "forms.common.email")
+					label=(t "forms.common.email")
+				}} 
+				{{form.element
+					property="webSiteUrl" 
+					placeholder=(t "forms.common.webSiteUrl")
+					label=(t "forms.common.webSiteUrl")
+				}} 
+				{{form.element
+					property="facebookPage" 
+					placeholder=(t "forms.common.facebookPage")
+					label=(t "forms.common.webSiteUrl")
+				}} 
+			{{/bs-form}}
 		</div>
 
 	</div>
+	{{/acc.item}}
+	{{#acc.item value="2" title=(t "forms.common.address.title")}}
+	<div class="card">
+			<div class="card-body">
+			{{address-input
+				address=model.club.postalAddress 
+				addressee=model.club.name
+				countries=model.countries 
+				save=(action "saveAddress")
+				}} 
+
+		</div>
+	</div>
+	{{/acc.item}}
+	{{#acc.item value="2" title=(t "site.members")}}
+	<div class="card">
+		<div class="card-body">
+			 {{entity-list items=model.club.members}}
+		</div>
+	</div>
+	{{/acc.item}}
+{{/bs-accordion}}
+<div class="card">
+<div class="card-header">
+		<div class="btn-group collapsed">
+			<button type="button" class="btn btn-secondary"
+				data-dismiss="modal">{{t "user.close"}}</button>
+			<button id="saveButton" 
+				class="btn btn-primary"
+				{{action "save"}} data-dismiss="modal" >{{t "user.save"}}</button>
+							
+		</div>
+	</div>
 </div>
-	{{outlet}}
+			{{yield}}

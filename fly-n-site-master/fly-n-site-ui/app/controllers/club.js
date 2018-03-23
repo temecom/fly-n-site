@@ -14,6 +14,9 @@ export default Ember.Controller.extend({
 			}
 			
 		},
+		saveAddress: function() {
+			
+		},
 		countrySelected: function(country) {
 			var club = this.get('club'); 
 			var postalAddress = club.get('postalAddress');

@@ -11,9 +11,9 @@
 				<li class="nav-item"><a class="nav-link active"
 					href="index.html"><em class="fa fa-dashboard"></em> Dashboard <span
 						class="sr-only">(current)</span></a></li>
-				<li class="nav-item"><a class="nav-link" href="widgets.html"><em
+				<li class="nav-item"><a class="nav-link" href="/clubs"><em
 						class="fa fa-calendar-o"></em> {{t 'site.clubs'}}</a></li>
-				<li class="nav-item"><a class="nav-link" href="charts.html"><em
+				<li class="nav-item"><a class="nav-link" href="/sites"><em
 						class="fa fa-bar-chart"></em> {{t 'site.sites'}}</a></li>
 				<li class="nav-item"><a class="nav-link" href="buttons.html"><em
 						class="fa fa-hand-o-up"></em> {{t 'site.weather'}}</a></li>
@@ -59,9 +59,20 @@
 
 				<section class="row">
 					<div class="col-md-12 col-lg-8">
-
+				{{#bs-button active=notCollapsed onClick=(action "toggle")}}
+					  {{#if collapsed}}
+					    Show
+					  {{else}}
+					    Hide
+					  {{/if}}
+					{{/bs-button}}
+					
+					<hr>
+					
+					{{#bs-collapse collapsed=collapsed}}
+  					
 						<!-- Fly N Site Header -->
-						<div class="fly-n-site-header" id="header">
+						<div class="fly-n-site-header well" id="header">
 							<div class="row">
 								<div class='fly-n-site-left-image'></div>
 								<div class="fly-n-site-center">
@@ -76,6 +87,8 @@
 							</div>
 
 						</div>
+						  
+						{{/bs-collapse}}
 						<!-- All center content shows up here -->
 						<div class="container" id="content">
 							{{outlet}}

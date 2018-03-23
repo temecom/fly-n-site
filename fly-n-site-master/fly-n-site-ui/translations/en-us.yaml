@@ -7,7 +7,8 @@ site:
   list: "List"
   clubs: "Clubs"
   sites: "Flying Sites"
-  members: "Pilots"
+  members: "Members"
+  pilots: "Pilots"
   weather: "Weather"
   administration: "Administration"
   overview: 
@@ -36,9 +37,12 @@ forms:
       postalCode: "PostalCode"
       region: "Region"
       country: "Country"
+    general: "Name"
+    identity: "Identity"
 user:
   save: "Save"
   new: "New"
   edit: "Edit"
+  close: "Close"
 administration:
   title: "Administration"

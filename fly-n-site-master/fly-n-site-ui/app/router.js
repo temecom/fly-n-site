@@ -11,11 +11,7 @@ Router.map(function() {
   this.route('club',{path:"club/:id"});
   this.route('login');
   this.route('sites');
-  this.route('site');
-  this.route('administration', function() {
-    this.route('clubs');
-    this.route('sites');
-  });
+  this.route('site',{path:"site/:id"});
   this.route('stories');
 });
 

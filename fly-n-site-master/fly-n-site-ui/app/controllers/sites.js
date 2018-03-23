@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
 	actions: {
 		siteSelected: function(site) {
-			this.showSiteModal(site);
+			this.transitionTo("site", site);
 		},
 		newSite: function() {
 			var self = this;

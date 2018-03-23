@@ -11,7 +11,7 @@
 */
 
 import DS from 'ember-data';
-import FlynSiteEntity from '../model/flyn-site-entity';
+import FlynSiteEntity from '../models/flyn-site-entity';
 
 export default FlynSiteEntity.extend({
 

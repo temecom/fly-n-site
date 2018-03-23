@@ -11,9 +11,9 @@
 */
 
 import DS from 'ember-data';
-import FlynSiteEntity from 'flyn-site-entity';
+import FlynSiteEntity from '../models/flyn-site-entity';
 
-export default DS.Model.extend({
+export default FlynSiteEntity.extend({
 
     mainContact: DS.belongsTo('person',{async:true}),
     postalAddress: DS.belongsTo('postalAddress',{async:true}),

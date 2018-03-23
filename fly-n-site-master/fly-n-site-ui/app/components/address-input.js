@@ -6,6 +6,10 @@ export default Ember.Component.extend({
 		
 		countrySelected: function(countryName) {
 			this.sendAction('countrySelected', countryName);
+		},
+		
+		save: function() {
+			this.get('save')();
 		}
 	},
 	countryNames: Ember.computed('countries', function(){

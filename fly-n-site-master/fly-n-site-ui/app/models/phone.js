@@ -11,9 +11,9 @@
 */
 
 import DS from 'ember-data';
-var ContactMethod = require('ContactMethod');
+import ContactMethod from '../models/contact-method';
 
-export default DS.Model.extend({
+export default ContactMethod.extend({
 
     number: DS.attr('string'),
     country: undefined

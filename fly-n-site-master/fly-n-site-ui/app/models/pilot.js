@@ -11,9 +11,9 @@
 */
 
 import DS from 'ember-data';
-var Person = require('Person');
+import Person  from '../models/person';
 
-export default DS.Model.extend({
+export default Person.extend({
 
     ratings: undefined,
     homeSite: DS.belongsTo('site',{async:true})

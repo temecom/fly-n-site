@@ -11,9 +11,9 @@
 */
 
 import DS from 'ember-data';
-var FlynSiteEntity = require('FlynSiteEntity');
+import FlynSiteEntity from '../models/flyn-site-entity';
 
-export default DS.Model.extend({
+export default FlynSiteEntity.extend({
 
     issued: DS.attr('date'),
     issuedBy: DS.belongsTo('instructor',{async:true})

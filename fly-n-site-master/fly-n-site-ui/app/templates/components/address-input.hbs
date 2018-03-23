@@ -1,40 +1,29 @@
-<div class="modal fade" id="addressModal" tabindex="-1" role="dialog"
-	aria-labelledby="addressModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="addressModalLabel">{{addressee}}</h5>
-				<button type="button" class="close" data-dismiss="modal"
-					aria-label={{t "forms.close"}}>
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
-				<form>
-					{{bootstrap-input value=address.street placeholder=(t "forms.common.address.street") label=(t "forms.common.address.street")}}
-					{{bootstrap-input value=address.city placeholder=(t "forms.common.address.city") label=(t "forms.common.address.city")}}
-					{{bootstrap-input value=address.postalCode placeholder=(t "forms.common.address.postalCode") label=(t "forms.common.address.postalCode")}}
-					{{bootstrap-input value=address.region placeholder=(t "forms.common.address.region") label=(t "forms.common.address.region")}}
-					{{#bootstrap-power-select 
-						selected=countryName
-						options=countries
-						placeholder=(t "forms.common.address.country") 
-						label=(t "forms.common.address.country")
-						onChange=(action "countrySelected" option)
-						as |option|}}
-    					<span>{{option.name}}</span>
-					{{/bootstrap-power-select}}
-				</form>
-					<div class="modal-footer">
+
+				{{#bs-form formLayout=formLayout model=address onSubmit=(action "save") as |form|}}
+				
+					{{form.element property="street" placeholder=(t "forms.common.address.street") label=(t "forms.common.address.street")}}
+					{{form.element property="city" placeholder=(t "forms.common.address.city") label=(t "forms.common.address.city")}}
+					{{form.element property="postalCode" placeholder=(t "forms.common.address.postalCode") label=(t "forms.common.address.postalCode")}}
+					{{form.element property="region" placeholder=(t "forms.common.address.region") label=(t "forms.common.address.region")}}
+					{{#bs-dropdown as |dd|}}
+					  {{#dd.button}}{{t "forms.common.address.country"}} <span class="caret"></span>{{/dd.button}}
+					  {{#dd.menu as |menu|}}
+					    {{#each model.countries as |country|}}
+					    {{#menu.item}}
+					      {{#menu.link-to "index"}}{{country.name}}{{/menu.link-to}}
+					    {{/menu.item}}
+					    
+					    {{/each}}
+					  {{/dd.menu}}
+					{{/bs-dropdown}}
+				{{/bs-form}}
+					<div class="card-footer">
+					<div class="btn-group">
 						<button type="button" class="btn btn-secondary"
 							data-dismiss="modal">Close</button>
 						<button id="saveAddressButton" class="btn btn-primary"
 							{{action "saveClub"}} data-dismiss="modal" >{{t "user.save"}}</button>
 					</div>
+					</div>
 				
-			</div>
-		</div>
-
-	</div>
-</div>
 {{yield}}

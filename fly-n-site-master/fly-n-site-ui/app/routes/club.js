@@ -1,10 +1,10 @@
-import Ember from 'ember';
+import RSVP from 'rsvp';
+import Route from '@ember/routing/route';
+export default Route.extend({
 
-export default Ember.Route.extend({
-	 
 	model: function(parameters) {
-		return {
+		return RSVP.hash ({
 			club:this.store.findRecord('club', parameters.id)
-			};
+		});
 	}
 });
