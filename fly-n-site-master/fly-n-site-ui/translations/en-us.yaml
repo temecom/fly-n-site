@@ -6,9 +6,15 @@ site:
   more: "More"
   list: "List"
   clubs: "Clubs"
+  club: "Club"
+  site: "Flying Site"
   sites: "Flying Sites"
   members: "Members"
+  memberships: "Memberships"
+  person: "Person"
+  people: "People" 
   pilots: "Pilots"
+  pilot: "Pilot"
   weather: "Weather"
   administration: "Administration"
   overview: 
@@ -26,6 +32,11 @@ site:
 forms:
   common:
     name: "Name"
+    givenName: "Given Name"
+    surName: "Surname"
+    renewalDate: "Renewal Date"
+    joinDate: "Member Since"
+    membershipId: "Membership Id"
     email: "E-Mail"
     webSiteUrl: "Web Site URL"
     id: "ID"
@@ -37,7 +48,7 @@ forms:
       postalCode: "PostalCode"
       region: "Region"
       country: "Country"
-    general: "Name"
+    general: "General"
     identity: "Identity"
 user:
   save: "Save"

@@ -18,6 +18,6 @@ export default FlynSiteEntity.extend({
 	emailAddress: DS.attr('string'),
 	webSiteUrl: DS.attr('string'),
 	facebookPage: DS.attr('string'),
-    members: DS.hasMany('clubMember',{async:true}),
+    memberships: DS.hasMany('membership',{async:true}),
     postalAddress: DS.belongsTo('postalAddress')
 });

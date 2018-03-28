@@ -4,10 +4,8 @@ export default Route.extend({
 	countryName: null,
 	model: function() {
 		return RSVP.hash({
-			clubs: this.store.findAll('club')
-		})
-		.then(function(hash){
-			return hash; 
+			countries: this.store.findAll('country'),
+			memberships: this.store.findAll('membership')
 		});
 	}
 });

@@ -12,12 +12,19 @@
 
 import DS from 'ember-data';
 import FlynSiteEntity from '../models/flyn-site-entity';
+import { computed } from '@ember/object';
 
 export default FlynSiteEntity.extend({
 
     givenName: DS.attr('string'),
     surName: DS.attr('string'),
     birthDate: DS.attr('date'),
-    contactMethods: DS.hasMany('contactMethod',{async:true})
+    contactMethods: DS.hasMany('contactMethod',{async:true}),
+    name: computed('surName', 'givenName', function() {
+        let givenName = this.get('givenName');
+        let surName = this.get('surName');
+
+        return `${givenName} ${surName}`;
+      })
 
 });

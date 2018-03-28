@@ -1,7 +1,7 @@
-<!-- The club editor modal dialog -->
+<!-- The person editor modal dialog -->
 	<div class="card">
 	<div class="card-header">
-		<h5>{{model.club.name}}</h5>
+		<h5>{{model.person.name}}</h5>
 			<div class="btn-group collapsed">
 				<button type="button" class="btn btn-secondary"
 					data-dismiss="modal">{{t "user.close"}}</button>
@@ -14,19 +14,25 @@
 	</div>
 {{#bs-accordion as |acc|}}	
 	{{#acc.item value="1" title=(t "forms.common.identity")}}
-	<div class="card" id="clubModal">
+	<div class="card" id="personModal">
 		<div class="card-body">{{#bs-form formLayout=formLayout
-			model=model.club 
+			model=model.person 
 			onSubmit=(action "save") as |form|}} 
 				{{form.element
+					enabled=false
 					property="id" 
 					placeholder=(t "forms.common.id") 
 					label=(t "forms.common.id")
 				}} 
 				{{form.element 
-					property="name" 
-					placeholder=(t "forms.common.name") 
-					label=(t "forms.common.name")
+					property="givenName" 
+					placeholder=(t "forms.common.givenName") 
+					label=(t "forms.common.givenName")
+				}} 
+				{{form.element 
+					property="surName" 
+					placeholder=(t "forms.common.surName") 
+					label=(t "forms.common.surName")
 				}} 
 				{{form.element
 					property="emailAddress" 
@@ -52,8 +58,8 @@
 	<div class="card">
 			<div class="card-body">
 			{{address-input
-				address=model.club.postalAddress 
-				addressee=model.club.name
+				address=model.person.postalAddress 
+				addressee=model.person.name
 				countries=model.countries 
 				save=(action "saveAddress")
 				}} 
@@ -61,10 +67,10 @@
 		</div>
 	</div>
 	{{/acc.item}}
-	{{#acc.item value="3" title=(t "site.members")}}
+	{{#acc.item value="3" title=(t "site.memberships")}}
 	<div class="card">
 		<div class="card-body">
-			 {{entity-list items=model.club.memberships}}
+			 {{entity-list items=model.person.memberships}}
 		</div>
 	</div>
 	{{/acc.item}}

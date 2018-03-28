@@ -13,6 +13,10 @@ Router.map(function() {
   this.route('sites');
   this.route('site',{path:"site/:id"});
   this.route('stories');
+  this.route('memberships');
+  this.route('membership',{path:"membership/:id"});
+  this.route('people');
+  this.route('person',{path:"person/:id"});
 });
 
 export default Router;

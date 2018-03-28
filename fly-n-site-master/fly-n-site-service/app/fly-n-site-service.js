@@ -15,6 +15,8 @@ class FlyNSiteService {
 	constructor() {
 		classes.club = {type:'club',path: 'clubs', clazz:require('./model/club')};
 		classes.site = {type:'site',path: 'sites', clazz:require('./model/site')};
+		classes.person = {type:'person',path: 'people', clazz:require('./model/person')};
+		classes.membership = {type:'membership',path: 'memberships', clazz:require('./model/membership')};
 		classes.postalAddress = {type:'postalAddress',path: 'postal-addresses', clazz:require('./model/postalAddress')};
 		classes.country = {type:'country',path: 'countries', clazz:require('./model/country')};
 	}

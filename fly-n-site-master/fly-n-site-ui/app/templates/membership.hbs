@@ -1,7 +1,7 @@
-<!-- The club editor modal dialog -->
+<!-- The membership editor modal dialog -->
 	<div class="card">
 	<div class="card-header">
-		<h5>{{model.club.name}}</h5>
+		<h5>{{model.membership.name}}</h5>
 			<div class="btn-group collapsed">
 				<button type="button" class="btn btn-secondary"
 					data-dismiss="modal">{{t "user.close"}}</button>
@@ -13,10 +13,10 @@
 		</div>
 	</div>
 {{#bs-accordion as |acc|}}	
-	{{#acc.item value="1" title=(t "forms.common.identity")}}
-	<div class="card" id="clubModal">
+	{{#acc.item value="1" title=(t "forms.common.general")}}
+	<div class="card" id="membershipModal">
 		<div class="card-body">{{#bs-form formLayout=formLayout
-			model=model.club 
+			model=model.membership 
 			onSubmit=(action "save") as |form|}} 
 				{{form.element
 					property="id" 
@@ -24,50 +24,42 @@
 					label=(t "forms.common.id")
 				}} 
 				{{form.element 
-					property="name" 
-					placeholder=(t "forms.common.name") 
-					label=(t "forms.common.name")
+					property="membershipId" 
+					placeholder=(t "forms.common.membershipId") 
+					label=(t "forms.common.membershipId")
 				}} 
 				{{form.element
-					property="emailAddress" 
-					placeholder=(t "forms.common.email")
-					label=(t "forms.common.email")
+					property="person" 
+					placeholder=(t "site.person")
+					label=(t "site.person")
 				}} 
+				{{#bs-dropdown as |dd|}}
+					  {{#dd.button}}{{t "site.clubs"}} <span class="caret"></span>{{/dd.button}}
+					  {{#dd.menu as |menu|}}
+					    {{#each model.clubs as |club|}}
+					    {{#menu.item}}
+					      <span {{action "clubSelected" club}}>{{club.name}}</span>
+					    {{/menu.item}}
+					    
+					    {{/each}}
+					  {{/dd.menu}}
+					{{/bs-dropdown}} 
 				{{form.element
-					property="webSiteUrl" 
-					placeholder=(t "forms.common.webSiteUrl")
-					label=(t "forms.common.webSiteUrl")
-				}} 
+					property="joined" 
+					placeholder=(t "forms.common.joinDate")
+					label=(t "forms.common.joinDate")
+				}}
 				{{form.element
-					property="facebookPage" 
-					placeholder=(t "forms.common.facebookPage")
-					label=(t "forms.common.webSiteUrl")
+					property="renewal" 
+					placeholder=(t "forms.common.renewalDate")
+					label=(t "forms.common.renewalDate")
 				}} 
 			{{/bs-form}}
 		</div>
 
 	</div>
 	{{/acc.item}}
-	{{#acc.item value="2" title=(t "forms.common.address.title")}}
-	<div class="card">
-			<div class="card-body">
-			{{address-input
-				address=model.club.postalAddress 
-				addressee=model.club.name
-				countries=model.countries 
-				save=(action "saveAddress")
-				}} 
 
-		</div>
-	</div>
-	{{/acc.item}}
-	{{#acc.item value="3" title=(t "site.members")}}
-	<div class="card">
-		<div class="card-body">
-			 {{entity-list items=model.club.memberships}}
-		</div>
-	</div>
-	{{/acc.item}}
 {{/bs-accordion}}
 <div class="card">
 <div class="card-header">

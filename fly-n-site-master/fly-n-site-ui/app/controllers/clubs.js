@@ -3,14 +3,14 @@ export default Controller.extend({
 
 	actions: {
 		clubSelected: function(club) {
-			this.transitionToRoute("club", club);
+			this.transitionToRoute("club", club.get("id"));
 		}, 
 		newClub: function() {
 			var self = this;
 			var club = this.store.createRecord('club');
 			club.save()
 			.then(function(club){
-				self.showClubModal(club);		
+				self.transitionToRoute("club", club.get("id"));
 			});
 		},
 		saveClub: function() {
