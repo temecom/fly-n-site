@@ -19,5 +19,4 @@ export default FlynSiteEntity.extend({
     postalAddress: DS.belongsTo('postalAddress',{async:true}),
     country: DS.belongsTo('country',{async:true})
 
-
 });

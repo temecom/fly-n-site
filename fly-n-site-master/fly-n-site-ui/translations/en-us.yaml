@@ -50,6 +50,8 @@ forms:
       country: "Country"
     general: "General"
     identity: "Identity"
+    map:
+      title: "Map"
 user:
   save: "Save"
   new: "New"

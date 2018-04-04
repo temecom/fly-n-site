@@ -6,7 +6,7 @@ export default Route.extend({
 		return RSVP.hash ({
 			person:this.store.findRecord('person', parameters.id)
 		})
-		then(function(hash){
+		.then(function(hash){
 			return hash;
 		});
 	}

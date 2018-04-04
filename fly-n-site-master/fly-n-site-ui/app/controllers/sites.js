@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
 	actions: {
 		siteSelected: function(site) {
-			this.transitionTo("site", site);
+			this.transitionToRoute("site", site.get('id'));
 		},
 		newSite: function() {
 			var self = this;

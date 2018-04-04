@@ -19,10 +19,16 @@ export default FlynSiteEntity.extend({
     renewal: DS.attr('date'),
     membershipId: DS.attr('string'),
     person: DS.belongsTo('person',{async:true}),
-    club: DS.belongsTo('club', {async:true}),
-    name: computed('membershipId', function() {
-        let membershipId = this.get('membershipId');
-       
-        return `${membershipId}`;
+    club: DS.belongsTo('club', {async:true, embedded:true}),
+    name: computed('membershipId','person', function() {
+        var membershipId = this.get('membershipId');
+        var person = this.get('person');
+        var surname=person.get('surName');
+        var givenName=person.get('givenName');
+        if (surname) {
+        	return membershipId + '-' + givenName + ' ' + surname ;
+        } else {
+        	return membershipId;
+        }
       })
 });

@@ -1,4 +1,4 @@
-<!-- The club editor modal dialog -->
+<!-- The club editor page -->
 	<div class="card">
 	<div class="card-header">
 		<h5>{{model.club.name}}</h5>
@@ -12,7 +12,7 @@
 			</div>
 		</div>
 	</div>
-{{#bs-accordion as |acc|}}	
+{{#bs-accordion selected="1" as |acc|}}	
 	{{#acc.item value="1" title=(t "forms.common.identity")}}
 	<div class="card" id="clubModal">
 		<div class="card-body">{{#bs-form formLayout=formLayout
@@ -81,4 +81,4 @@
 		</div>
 	</div>
 </div>
-			{{yield}}
+{{outlet}}

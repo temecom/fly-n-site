@@ -15,8 +15,7 @@ import FlynSiteEntity from '../models/flyn-site-entity';
 
 export default FlynSiteEntity.extend({
 
-    issuer: undefined,
+    issuer: DS.belongsTo('Organization', {async:true}),
     code: DS.attr('string')
-
 
 });

@@ -1,0 +1,18 @@
+ <div class="label">{{label}}</div>
+
+{{#bs-dropdown as |dd|}}
+	  {{input class="btn btn-md btn-secondary" value=value.name placeholder=label}}
+	  {{#dd.button}}{{listLabel}} <span class="caret"></span>{{/dd.button}}
+	 
+	  {{#dd.menu class="fns-drop-down-menu" as |menu|}}
+	    {{#each items as |item|}}
+	    {{#menu.item }}
+	      <a class="btn btn-md" href="#" {{action "itemSelected" item}}>{{item.name}}</a>
+	    {{/menu.item}}
+	    
+	    {{/each}}
+	  {{/dd.menu}}
+	
+{{/bs-dropdown}} 
+
+{{yield}}

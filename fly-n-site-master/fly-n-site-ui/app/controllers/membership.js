@@ -13,6 +13,14 @@ export default Ember.Controller.extend({
 				});
 			}
 			
+		},
+		clubSelected: function(club) {
+			var member = this.get('model.membership');
+			member.set('club', club);
+		},
+		personSelected: function(person) {
+			var member = this.get('model.membership');
+			member.set('person', person);
 		}
 	}
 });

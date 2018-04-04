@@ -14,9 +14,7 @@ import DS from 'ember-data';
 import FlynSiteEntity from '../models/flyn-site-entity';
 
 export default FlynSiteEntity.extend({
-
-	ratingType: DS.belongsTo('rating-type',{async:true}),
-    issued: DS.attr('date'),
-    issuedBy: DS.belongsTo('instructor',{async:true})
-
+	description: DS.attr('string'),
+    latitude: DS.attr('number'),
+    longitude: DS.attr('number')
 });

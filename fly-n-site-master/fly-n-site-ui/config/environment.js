@@ -22,6 +22,8 @@ module.exports = function(environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
     }
+    
+    
   };
 
   if (environment === 'development') {
@@ -30,6 +32,17 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+	  ENV['ember-google-maps'] = {
+			  key: "AIzaSyCS2aUF4BlGAU8Z23p5AkwzFmJzeTodyAc" , // Using .env files in this example
+			  language: 'en',
+			  region: 'US',
+			  protocol: 'https',
+			  version: '3.31',
+			  libraries: ['geometry']
+			  // client: undefined,
+			  // channel: undefined,
+			  // baseUrl: '//maps.googleapis.com/maps/api/js'
+			}
   }
 
   if (environment === 'test') {

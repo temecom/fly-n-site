@@ -10,11 +10,10 @@
 * Class: Location
 */
 
-import DS from 'ember-data';
-export default DS.Model.extend({
+import FlynSiteEntity from '../models/flyn-site-entity';
 
-    latitude: undefined,
-    longitude: undefined
+export default FlynSiteEntity.extend({
 
-
+    latitude: DS.attr('number'),
+    longitude: DS.attr('number')
 });

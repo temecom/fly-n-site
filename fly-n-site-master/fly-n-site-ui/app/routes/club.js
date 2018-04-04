@@ -7,7 +7,7 @@ export default Route.extend({
 			club:this.store.findRecord('club', parameters.id), 
 			countries: this.store.findAll('country')
 		})
-		then(function(hash){
+		.then(function(hash){
 			return hash;
 		});
 	}

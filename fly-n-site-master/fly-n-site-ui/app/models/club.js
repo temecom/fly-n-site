@@ -14,7 +14,7 @@ import DS from 'ember-data';
 import FlynSiteEntity from '../models/flyn-site-entity';
 
 export default FlynSiteEntity.extend({
-
+	
 	emailAddress: DS.attr('string'),
 	webSiteUrl: DS.attr('string'),
 	facebookPage: DS.attr('string'),

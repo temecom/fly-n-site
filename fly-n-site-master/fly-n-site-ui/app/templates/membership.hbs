@@ -1,7 +1,7 @@
 <!-- The membership editor modal dialog -->
 	<div class="card">
 	<div class="card-header">
-		<h5>{{model.membership.name}}</h5>
+		<h5>{{model.membership.name}} </h5>
 			<div class="btn-group collapsed">
 				<button type="button" class="btn btn-secondary"
 					data-dismiss="modal">{{t "user.close"}}</button>
@@ -28,23 +28,26 @@
 					placeholder=(t "forms.common.membershipId") 
 					label=(t "forms.common.membershipId")
 				}} 
+			
+				
+				{{fns-dropdown 
+					items=model.people 
+					value=model.membership.person
+					listLabel=(t "site.people")
+					label=(t "site.person") 
+					itemSelected=(action "personSelected")
+					}}
+				
+				{{fns-dropdown 
+					items=model.clubs 
+					value=model.membership.club
+					listLabel=(t "site.clubs") 
+				label=(t "site.club") 
+				itemSelected=(action "clubSelected")
+				}}
+					
 				{{form.element
-					property="person" 
-					placeholder=(t "site.person")
-					label=(t "site.person")
-				}} 
-				{{#bs-dropdown as |dd|}}
-					  {{#dd.button}}{{t "site.clubs"}} <span class="caret"></span>{{/dd.button}}
-					  {{#dd.menu as |menu|}}
-					    {{#each model.clubs as |club|}}
-					    {{#menu.item}}
-					      <span {{action "clubSelected" club}}>{{club.name}}</span>
-					    {{/menu.item}}
-					    
-					    {{/each}}
-					  {{/dd.menu}}
-					{{/bs-dropdown}} 
-				{{form.element
+					type="date"
 					property="joined" 
 					placeholder=(t "forms.common.joinDate")
 					label=(t "forms.common.joinDate")
