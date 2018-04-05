@@ -15,10 +15,16 @@
 {{#bs-accordion selected="1" as |acc|}}	
 	{{#acc.item value="1"  title=(t "forms.common.map.title")}}
 	
-			{{#g-map lat=model.site.siteMarker.latitude lng=model.site.siteMarker.longitude zoom=10}}
+			{{#g-map 
+				lat=model.site.siteMarker.latitude 
+				lng=model.site.siteMarker.longitude 
+				zoom=10 
+				mapTypeId='terrain'
+				as |g| }}
 				{{g.canvas}}
 				{{#each model.site.markers as |marker|}}
 			    {{g.marker
+			      label=marker.name
 			      lat=marker.latitude
 			      lng=marker.longitude
 			      draggable=true}}
