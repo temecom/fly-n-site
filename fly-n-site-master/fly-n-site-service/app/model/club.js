@@ -1,7 +1,7 @@
 //app/models/Club
 
 /*
-* (C)  Copyright 2015,  Dali Analytics, LLC.  
+* (C)  Copyright 2017, FlyNSite 
  * All rights reserved 
 */
 
@@ -15,7 +15,6 @@ var Schema = mongoose.Schema;
 var FlynSiteEntity = require('./flynSiteEntity');
 var options = {discriminatorKey: '_class'};
 var Club = FlynSiteEntity.discriminator('Club',new Schema({
-    name: String,
     emailAddress: String,
     webSiteUrl: String,
     facebookPage: String

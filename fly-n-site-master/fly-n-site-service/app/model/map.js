@@ -7,18 +7,18 @@
 
 /**
 * Generated On: 2017-8-15
-* Class: Site
+* Class: Map
 */
 
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var FlynSiteEntity = require('./flynSiteEntity');
 
-var Site = FlynSiteEntity.discriminator('Site',new Schema({
-
+var Map = FlynSiteEntity.discriminator('Map',new Schema({
+	zoomLevel: Number, 
     description: String,
-    map: {type: Schema.Types.ObjectId, ref: 'Map'}
+    markers: [{type: Schema.Types.ObjectId, ref: 'MapMarker'}]
 
 }, FlynSiteEntity.options));
 
-module.exports = Site;
+module.exports = Map;

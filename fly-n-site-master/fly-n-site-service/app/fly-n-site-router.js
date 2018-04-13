@@ -33,11 +33,12 @@ class FlyNSiteRouter {
 		var self = this; 
 
 		this.app.get('/' + classDefinition.path, function (req, res) {
-			self.getEntities(self,req,res,classDefinition.type);
+			self.getAllEntities(self,req,res,classDefinition);
 		});
 		
+		
 		this.app.get('/' + classDefinition.path +'/:id', function (req, res) {
-			self.getEntity(self,req,res,classDefinition.type);
+			self.getEntity(self,req,res,classDefinition);
 		});
 		/** 
 		 * Create a new entity
@@ -63,13 +64,19 @@ class FlyNSiteRouter {
 		// request contained the JSON of the new "entity" item to be saved
 		var body = req.body; 
 		console.log(body);
+		var relationships = req.body.data.relationships;
+		for (key in Object.keys(relationships)) {
+			var id = relationships[key].data.id;
+			body.data.attributes[key]=id;
+		}
 		var entity = new classDefinition.clazz(req.body.data.attributes);
+
 		entity.save((err, createdEntity) => {  
 		    if (err) {
 		        res.status(500).send(err);
 		    }
 
-		    var payload = {data: self.packageEntity(classDefinition.type, createdEntity)};
+		    var payload = {data: self.packageEntity(classDefinition, createdEntity)};
 		    console.log(payload);
 		    res.status(200).send(payload); 
 		});
@@ -96,41 +103,73 @@ class FlyNSiteRouter {
 		    		var key = attributeKeys[index];
 		    		entity[key] = attributes[key];
 		    	}
+		    	
+				var relationships = req.body.data.relationships;
+				var relationshipKeys = Object.keys(relationships);
+				for (var index=0;index<relationshipKeys.length;index++) {
+					var key = relationshipKeys[index];
+					var id = relationships[key].data.id;
+					entity[key]=id;
+				}
 
 		        // Save the updated document back to the database
-		        entity.save((err, updatedEtity) => {
+		        entity.save((err, updatedEntity) => {
 		            if (err) {
 		                res.status(500).send(err)
 		            }
-		            var payload = {data: self.packageEntity(classDefinition.type, updatedEtity)};
+		            var payload = {data: self.packageEntity(classDefinition, updatedEntity)};
 		            res.status(200).send(payload);
 		        });
 		    }
 		});
 	}
 	/**
-	 * Get a list of entities
+	 * Get a list of entities using the optional passed query parameters as a JSON hash in the form:
+	 * {"parameter":"value"}
+	 * See: http://mongoosejs.com/docs/api.html#find_find
 	 */
-	getEntities(self,req, res, type) {
-		  self.service.findAll(type)
+	getAllEntities(self,req, res, classDefinition) {
+		
+		var type = classDefinition.type; 
+		var queryParameter = req.query.query; 
+		var query ;
+		if (queryParameter) {
+			query = JSON.parse(queryParameter);
+			/**
+			 * Check for a regex
+			 */
+			var key = Object.keys(query)[0];
+			var value = query[key];
+			if (value.includes('/'))  {
+				var parts = value.split('/');
+				console.log(parts[0] + ':' + parts[1] + ':' +  parts[2]);
+				var regex = new RegExp(parts[1], parts[2]);
+				query[key]=regex; 
+			}
+		}
+
+
+		  self.service.findAll(type, query)
 	  		.then(function(rawEntities){
 	  			var entities = rawEntities.map(function(entity){
-	  				return this.packageEntity(type,entity._doc);
+	  				return this.packageEntity(classDefinition,entity._doc);
 	  			}, self);
 	  			var payload = {data:entities}
 	  			res.send(payload); 
 			})
 			.catch(function(err) {
 				res.send(self.packageError("Failed to find entities", err,501)); 
-		});
-		   
+			});   
 	}
 	
-	getEntity(self,req, res, type) {
+	
+	
+	getEntity(self,req, res, classDefinition) {
+		var type = classDefinition.type;
 		var id = req.params.id;
 		  self.service.findById(type, id)
 	  		.then(function(entity){
-	  			var payload = {data: self.packageEntity(type, entity)};
+	  			var payload = {data: self.packageEntity(classDefinition, entity._doc)};
 	  			res.send(payload); 
 			})
 			.catch(function(err) {
@@ -140,14 +179,40 @@ class FlyNSiteRouter {
 		
 	}
 	/**
-	 * Package the entity given the type and id 
+	 * Package the entity given the classDefinition and entity retrieved 
 	 */
-	packageEntity(type, entity) {
-
-		var payload =  {type: type, id: entity._id, attributes: entity};
+	packageEntity(classDefinition, entity) {
+		var type = classDefinition.type;
+		var relationships = {}; 
+		var clazz = classDefinition.clazz;
+		var record = entity;
+		var fields = Object.keys(entity);
+		var id = entity._id; 
 		delete(entity["_id"]);
 		delete(entity["__v"]);
 		delete(entity["_class"]);
+		for (var index=0;index<fields.length;index++) {
+			var key = fields[index];
+			if (key !== 'id') {
+				var value = entity[key];
+				if (value && ((typeof value) == 'object' )) {
+					if (!Array.isArray(value)) {
+						relationships[key] = {data:{type:key, id:value.toString()}};
+					} else {
+						relationships[key] = {data:[]}; 
+						value.forEach(function(value){
+							var arrayType = clazz.schema.tree[key][0].ref;
+							arrayType = arrayType.substring(0,1).toLowerCase() + arrayType.substring(1); 
+							relationships[key].data.push({type:arrayType, id:value.toString()});
+						});
+					}
+					delete(entity[key]);
+				}
+			}
+			
+		}
+		var payload =  {type: type, id: id, attributes: entity,relationships:relationships};
+
 		return payload;
 	}
 	

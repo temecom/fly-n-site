@@ -1,4 +1,4 @@
-//app/models/site
+//app/models/map
 
 /*
 * (C)  Copyright 2017, FlynSite.  
@@ -13,10 +13,9 @@ import { computed } from '@ember/object';
 import DS from 'ember-data';
 import FlynSiteEntity from '../models/flyn-site-entity';
 export default FlynSiteEntity.extend({
-
+	zoomLevel: DS.attr('number'),
     description: DS.attr('string'),
-    map: DS.belongsTo('Map'),
-    regulations: DS.hasMany('Regulation'), 
+    markers: DS.hasMany('MapMarker'), 
     siteMarker: computed('markers', function() {
     	var markers = this.get('markers'); 
     	if (markers) {

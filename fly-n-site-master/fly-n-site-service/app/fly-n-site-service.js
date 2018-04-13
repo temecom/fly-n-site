@@ -17,8 +17,10 @@ class FlyNSiteService {
 		classes.site = {type:'site',path: 'sites', clazz:require('./model/site')};
 		classes.person = {type:'person',path: 'people', clazz:require('./model/person')};
 		classes.membership = {type:'membership',path: 'memberships', clazz:require('./model/membership')};
-		classes.postalAddress = {type:'postalAddress',path: 'postal-addresses', clazz:require('./model/postalAddress')};
+		classes.postalAddress = {type:'postal-addresses',path: 'postal-addresses', clazz:require('./model/postalAddress')};
 		classes.country = {type:'country',path: 'countries', clazz:require('./model/country')};
+		classes.mapMarker = {type:'mapMarker',path: 'map-markers', clazz:require('./model/mapMarker')};
+		classes.map = {type:'map',path: 'maps', clazz:require('./model/map')};
 	}
 	
 	/**
@@ -78,10 +80,17 @@ class FlyNSiteService {
 		
 	}
 	
-	findAll(type) {
+	/**
+	 * Find by the passed JSON query hash in the form: 
+	 * 
+	 * {"attribute1":"value1",...} 
+	 */
+	findAll(type, query) {
 		var clazz = classes[type].clazz;
-		return clazz.find().exec();
+		console.log("Querying for class: " + type + " with: " + JSON.stringify(query));
+		return clazz.find(query).exec();
 	}
+
 
 	findClubById(id)  {
 		return Club.findById(id).exec();

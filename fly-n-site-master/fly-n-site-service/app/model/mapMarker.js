@@ -1,4 +1,4 @@
-//app/models/Country
+//app/models/MapMarker
 
 /*
 * (C)  Copyright 2017, FlyNSite 
@@ -7,16 +7,17 @@
 
 /**
 * Generated On: 2017-8-15
-* Class: Country
+* Class: MapMarker
 */
 
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var FlynSiteEntity = require('./flynSiteEntity');
 var options = {discriminatorKey: '_class'};
-var Country = FlynSiteEntity.discriminator('Country',new Schema({
-     code: String, 
-    
+var MapMarker = FlynSiteEntity.discriminator('MapMarker',new Schema({
+ 	 description: String, 
+     latitude: Number,
+     longitude: Number
 },options));
 
-module.exports = Country;
+module.exports = MapMarker;

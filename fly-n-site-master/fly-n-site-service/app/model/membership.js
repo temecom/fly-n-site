@@ -1,7 +1,7 @@
 //app/models/Membership
 
 /*
-* (C)  Copyright 2015,  Dali Analytics, LLC.  
+* (C)  Copyright 2017, FlyNSite 
  * All rights reserved 
 */
 

@@ -16,13 +16,13 @@
 	{{#acc.item value="1"  title=(t "forms.common.map.title")}}
 	
 			{{#g-map 
-				lat=model.site.siteMarker.latitude 
-				lng=model.site.siteMarker.longitude 
+				lat=model.site.map.siteMarker.latitude 
+				lng=model.site.map.siteMarker.longitude 
 				zoom=10 
 				mapTypeId='terrain'
 				as |g| }}
 				{{g.canvas}}
-				{{#each model.site.markers as |marker|}}
+				{{#each model.site.map.markers as |marker|}}
 			    {{g.marker
 			      label=marker.name
 			      lat=marker.latitude

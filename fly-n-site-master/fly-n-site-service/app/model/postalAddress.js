@@ -17,8 +17,9 @@ var options = {discriminatorKey: '_class'};
 var PostalAddress = FlynSiteEntity.discriminator('PostalAddress',new Schema({
 	street: String,
     city: String,
-    region: String,
-    postalcode: String
+    region: { type: Schema.Types.ObjectId, ref: 'Region' },
+    postalcode: String,
+    county: { type: Schema.Types.ObjectId, ref: 'Country' },
 },options));
 
 module.exports = PostalAddress;
