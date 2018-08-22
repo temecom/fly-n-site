@@ -15,6 +15,5 @@ import FlynSiteEntity from '../models/flyn-site-entity';
 
 export default FlynSiteEntity.extend({
 	description: DS.attr('string'),
-    latitude: DS.attr('number'),
-    longitude: DS.attr('number')
+	location: DS.belongsTo('Location')
 });

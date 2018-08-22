@@ -29,6 +29,8 @@ site:
   topFlights: 
     title: "Top Flights"
     description: "Notable flights this week"
+  map:
+    newMarker: "New Marker"
 forms:
   common:
     name: "Name"

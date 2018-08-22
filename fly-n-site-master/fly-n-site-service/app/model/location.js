@@ -14,6 +14,7 @@ var Schema = mongoose.Schema;
 var FlynSiteEntity = require('./flynSiteEntity');
 var options = {discriminatorKey: '_class'};
 var Location = FlynSiteEntity.discriminator('Location',new Schema({
+	 name: String,
      latitude: Number, 
      longitude: Number
 },options));

@@ -13,12 +13,12 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var FlynSiteEntity = require('./flynSiteEntity');
-
+var options = {discriminatorKey: '_class'};
 var Map = FlynSiteEntity.discriminator('Map',new Schema({
 	zoomLevel: Number, 
     description: String,
-    markers: [{type: Schema.Types.ObjectId, ref: 'MapMarker'}]
-
+    markers: [{type: Schema.Types.ObjectId, ref: 'MapMarker'}],
+	siteMarker: {type: Schema.Types.ObjectId, ref: 'MapMarker'}
 }, FlynSiteEntity.options));
 
 module.exports = Map;

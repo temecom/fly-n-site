@@ -16,18 +16,25 @@
 	{{#acc.item value="1"  title=(t "forms.common.map.title")}}
 	
 			{{#g-map 
-				lat=model.site.map.siteMarker.latitude 
-				lng=model.site.map.siteMarker.longitude 
-				zoom=10 
+				lat=model.site.map.siteMarker.location.latitude 
+				lng=model.site.map.siteMarker.location.longitude 
+				zoom=model.site.map.zoomLevel
 				mapTypeId='terrain'
 				as |g| }}
 				{{g.canvas}}
+				{{g.marker
+			      label=model.site.map.siteMarker.name
+			      lat=model.site.map.siteMarker.location.latitude 
+				lng=model.site.map.siteMarker.location.longitude 
+			      draggable=true
+			      onDragend=(action "dragEnd")}}
 				{{#each model.site.map.markers as |marker|}}
 			    {{g.marker
 			      label=marker.name
-			      lat=marker.latitude
-			      lng=marker.longitude
-			      draggable=true}}
+			      lat=marker.location.latitude
+			      lng=marker.location.longitude
+			      draggable=true
+			      onDragend=(action "dragEnd")}}
 			  {{/each}}
 			{{/g-map}}
 	
@@ -63,6 +70,9 @@
 			<button id="saveButton" 
 				class="btn btn-primary"
 				{{action "save"}} data-dismiss="modal" >{{t "user.save"}}</button>
+			<button id="newMarkerButton" 
+				class="btn btn-primary"
+				{{action "newMarker"}} data-dismiss="modal" >{{t "site.map.newMarker"}}</button>
 							
 		</div>
 	</div>

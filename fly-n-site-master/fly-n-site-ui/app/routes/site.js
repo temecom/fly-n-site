@@ -1,20 +1,27 @@
 import Route from '@ember/routing/route';
-import { hash } from 'rsvp';
+import { hash as rsvpHash} from 'rsvp';
 export default Route.extend({
 	model: function(parameters) {
-		return hash ({
-			site: this.store.findRecord('site', parameters.id)
+		return this.store.findRecord('site', parameters.id)
+		.then(function(site){
+			var model = {};
+			model.site=site;
+			model.map=site.get('map');
+			return rsvpHash (model);
 		})
 		.then(function(model){
-			model.map=model.site.get('map');
-			return hash (model);
+			if (model.map) {
+				model.markers = model.map.get('markers');
+			}
+			return rsvpHash (model);
 		})
 		.then(function(model){
-			model.markers = model.map.get('markers');
-			return hash (model);
-		})
-		.then(function(model){
-			return hash (model);
+			if (model.markers) {
+				model.locations = model.markers.map(function(marker){
+					return marker.get('location');
+				});
+			}
+			return model;
 		});
 	}
 });

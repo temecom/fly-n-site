@@ -13,6 +13,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var FlynSiteEntity = require('./flynSiteEntity');
+var options = {discriminatorKey: '_class'};
 
 var Site = FlynSiteEntity.discriminator('Site',new Schema({
 

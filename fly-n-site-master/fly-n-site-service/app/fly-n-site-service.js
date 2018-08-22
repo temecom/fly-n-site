@@ -21,6 +21,8 @@ class FlyNSiteService {
 		classes.country = {type:'country',path: 'countries', clazz:require('./model/country')};
 		classes.mapMarker = {type:'mapMarker',path: 'map-markers', clazz:require('./model/mapMarker')};
 		classes.map = {type:'map',path: 'maps', clazz:require('./model/map')};
+		classes.location = {type:'location',path: 'locations', clazz:require('./model/location')};
+		classes.event = {type:'event',path: 'events', clazz:require('./model/event')};
 	}
 	
 	/**

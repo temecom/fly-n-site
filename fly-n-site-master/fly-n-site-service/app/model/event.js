@@ -1,22 +1,22 @@
-//app/models/MapMarker
+//app/models/Location
 
 /*
 * (C)  Copyright 2017, FlyNSite 
  * All rights reserved 
 */
-
 /**
 * Generated On: 2017-8-15
-* Class: MapMarker
+* Class: Location
 */
 
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var FlynSiteEntity = require('./flynSiteEntity');
 var options = {discriminatorKey: '_class'};
-var MapMarker = FlynSiteEntity.discriminator('MapMarker',new Schema({
- 	 description: String, 
- 	location: {type: Schema.Types.ObjectId, ref: 'location'}
+var Event = FlynSiteEntity.discriminator('Event',new Schema({
+	startDateAndTime: Date,
+	endDateAndTime: Date,
+	location: {type: Schema.Types.ObjectId, ref: 'Location'}
 },options));
 
-module.exports = MapMarker;
+module.exports = Event;
