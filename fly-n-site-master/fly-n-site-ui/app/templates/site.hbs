@@ -5,76 +5,88 @@
 			<div class="btn-group collapsed">
 				<button type="button" class="btn btn-secondary"
 					data-dismiss="modal">{{t "user.close"}}</button>
-				<button id="saveButton" 
+				<button id="saveButton"
 					class="btn btn-primary"
 					{{action "save"}} data-dismiss="modal" >{{t "user.save"}}</button>
-								
 			</div>
 		</div>
 	</div>
-{{#bs-accordion selected="1" as |acc|}}	
+	<div id="modalPlaceHolder">
+		{{sweet-alert
+		show=markerEditorVisible
+		title=(t "site.map.markerEditor")
+		input="text"
+	  inputValue=marker.name
+	  showCancelButton=true
+		callback=(action 'saveMarker')}}
+ </div>
+{{#bs-accordion selected="1" as |acc|}}
 	{{#acc.item value="1"  title=(t "forms.common.map.title")}}
-	
-			{{#g-map 
-				lat=model.site.map.siteMarker.location.latitude 
-				lng=model.site.map.siteMarker.location.longitude 
+
+			{{#g-map
+				lat=model.site.map.siteMarker.location.latitude
+				lng=model.site.map.siteMarker.location.longitude
 				zoom=model.site.map.zoomLevel
 				mapTypeId='terrain'
 				as |g| }}
 				{{g.canvas}}
 				{{g.marker
 			      label=model.site.map.siteMarker.name
-			      lat=model.site.map.siteMarker.location.latitude 
-				lng=model.site.map.siteMarker.location.longitude 
+			      lat=model.site.map.siteMarker.location.latitude
+				lng=model.site.map.siteMarker.location.longitude
 			      draggable=true
-			      onDragend=(action "dragEnd")}}
+			      onDragend=(action "dragEnd")
+					  onClick=(action "showMarkerEditor" g.marker)}}
 				{{#each model.site.map.markers as |marker|}}
 			    {{g.marker
 			      label=marker.name
 			      lat=marker.location.latitude
 			      lng=marker.location.longitude
 			      draggable=true
-			      onDragend=(action "dragEnd")}}
+			      onDragend=(action "dragEnd")
+					  onClick=(action "showMarkerEditor" g.marker)}}
 			  {{/each}}
 			{{/g-map}}
-	
+
 	{{/acc.item}}
 	{{#acc.item value="2" title=(t "forms.common.identity")}}
 	<div class="card" id="siteModal">
 		<div class="card-body">{{#bs-form formLayout=formLayout
-			model=model.site 
-			onSubmit=(action "save") as |form|}} 
+			model=model.site
+			onSubmit=(action "save") as |form|}}
 				{{form.element
-					property="id" 
-					placeholder=(t "forms.common.id") 
+					property="id"
+					placeholder=(t "forms.common.id")
 					label=(t "forms.common.id")
-				}} 
-				{{form.element 
-					property="name" 
-					placeholder=(t "forms.common.name") 
+				}}
+				{{form.element
+					property="name"
+					placeholder=(t "forms.common.name")
 					label=(t "forms.common.name")
-				}} 
+				}}
 			{{/bs-form}}
 		</div>
 
 	</div>
 	{{/acc.item}}
 
-	
+
 {{/bs-accordion}}
 <div class="card">
 <div class="card-header">
 		<div class="btn-group collapsed">
 			<button type="button" class="btn btn-secondary"
 				data-dismiss="modal">{{t "user.close"}}</button>
-			<button id="saveButton" 
+			<button id="saveButton"
 				class="btn btn-primary"
 				{{action "save"}} data-dismiss="modal" >{{t "user.save"}}</button>
-			<button id="newMarkerButton" 
+			<button id="newMarkerButton"
 				class="btn btn-primary"
 				{{action "newMarker"}} data-dismiss="modal" >{{t "site.map.newMarker"}}</button>
-							
+
 		</div>
 	</div>
 </div>
+
+
 {{outlet}}

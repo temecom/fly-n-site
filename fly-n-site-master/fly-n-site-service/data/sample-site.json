@@ -1,0 +1,491 @@
+
+{
+    "_id" : ObjectId("59e5a225748b851fca055b9f"),
+    "emailAddress" : null,
+    "webSiteUrl" : "http://sdhgpg.org",
+    "facebookPage" : null,
+    "name" : "San Diego Hang Gliding and Paragliding Society",
+    "updateTime" : null,
+    "_class" : "Club",
+    "__v" : 0
+}
+
+
+{
+    "_id" : ObjectId("59e5a26e748b851fca055ba0"),
+    "emailAddress" : null,
+    "webSiteUrl" : null,
+    "facebookPage" : null,
+    "name" : "Sylmar Hang Gliding and Paragliding Club",
+    "updateTime" : null,
+    "_class" : "Club",
+    "__v" : 0
+}
+
+
+{
+    "_id" : ObjectId("59ec368989387d6f1c223a26"),
+    "street" : null,
+    "city" : null,
+    "name" : null,
+    "updateTime" : null,
+    "_class" : "PostalAddress",
+    "__v" : 0
+}
+
+
+{
+    "_id" : ObjectId("59ec37a089387d6f1c223a27"),
+    "street" : null,
+    "city" : null,
+    "name" : null,
+    "updateTime" : null,
+    "_class" : "PostalAddress",
+    "__v" : 0
+}
+
+
+{
+    "_id" : ObjectId("59ec37c089387d6f1c223a28"),
+    "street" : null,
+    "city" : null,
+    "name" : null,
+    "updateTime" : null,
+    "_class" : "PostalAddress",
+    "__v" : 0
+}
+
+
+{
+    "_id" : ObjectId("59eedad0cb9ffd451bd99f35"),
+    "name" : "United States",
+    "code" : "US",
+    "_class" : "Country",
+    "__v" : 0
+}
+
+
+{
+    "_id" : ObjectId("59eedadacb9ffd451bd99f36"),
+    "name" : "Canada",
+    "code" : "CDN",
+    "_class" : "Country",
+    "__v" : 0
+}
+
+
+{
+    "_id" : ObjectId("59eedadbcb9ffd451bd99f38"),
+    "name" : "Great Britain",
+    "code" : "UK",
+    "_class" : "Country",
+    "__v" : 0
+}
+
+
+{
+    "_id" : ObjectId("59eedadacb9ffd451bd99f37"),
+    "name" : "Mexico",
+    "code" : "MX",
+    "_class" : "Country",
+    "__v" : 0
+}
+
+
+{
+    "_id" : ObjectId("59eedc68cb9ffd451bd99f39"),
+    "street" : null,
+    "city" : null,
+    "name" : null,
+    "updateTime" : null,
+    "_class" : "PostalAddress",
+    "__v" : 0
+}
+
+
+{
+    "_id" : ObjectId("59eedc69cb9ffd451bd99f3a"),
+    "street" : null,
+    "city" : null,
+    "name" : null,
+    "updateTime" : null,
+    "_class" : "PostalAddress",
+    "__v" : 0
+}
+
+
+{
+    "_id" : ObjectId("59eede75cb9ffd451bd99f3b"),
+    "street" : null,
+    "city" : null,
+    "name" : null,
+    "updateTime" : null,
+    "_class" : "PostalAddress",
+    "__v" : 0
+}
+
+
+{
+    "_id" : ObjectId("59eedf37cb9ffd451bd99f3c"),
+    "street" : null,
+    "city" : null,
+    "name" : null,
+    "updateTime" : null,
+    "_class" : "PostalAddress",
+    "__v" : 0
+}
+
+
+{
+    "_id" : ObjectId("59eee0fdcb9ffd451bd99f3d"),
+    "street" : null,
+    "city" : null,
+    "name" : null,
+    "updateTime" : null,
+    "_class" : "PostalAddress",
+    "__v" : 0
+}
+
+
+{
+    "_id" : ObjectId("59eee231cb9ffd451bd99f3e"),
+    "street" : null,
+    "city" : null,
+    "name" : null,
+    "updateTime" : null,
+    "_class" : "PostalAddress",
+    "__v" : 0
+}
+
+
+{
+    "_id" : ObjectId("59eee2af693e364a54d13401"),
+    "street" : null,
+    "city" : null,
+    "name" : null,
+    "updateTime" : null,
+    "_class" : "PostalAddress",
+    "__v" : 0
+}
+
+
+{
+    "_id" : ObjectId("59eee2df693e364a54d13402"),
+    "street" : null,
+    "city" : null,
+    "name" : null,
+    "updateTime" : null,
+    "_class" : "PostalAddress",
+    "__v" : 0
+}
+
+
+{
+    "_id" : ObjectId("59f01dd4693e364a54d13403"),
+    "street" : null,
+    "city" : null,
+    "name" : null,
+    "updateTime" : null,
+    "_class" : "PostalAddress",
+    "__v" : 0
+}
+
+
+{
+    "_id" : ObjectId("59f02183693e364a54d13404"),
+    "street" : null,
+    "city" : null,
+    "name" : null,
+    "updateTime" : null,
+    "_class" : "PostalAddress",
+    "__v" : 0
+}
+
+
+{
+    "_id" : ObjectId("59f021dc693e364a54d13405"),
+    "street" : null,
+    "city" : null,
+    "name" : null,
+    "updateTime" : null,
+    "_class" : "PostalAddress",
+    "__v" : 0
+}
+
+
+{
+    "_id" : ObjectId("59f028c4693e364a54d13406"),
+    "street" : null,
+    "city" : null,
+    "name" : null,
+    "updateTime" : null,
+    "_class" : "PostalAddress",
+    "__v" : 0
+}
+
+
+{
+    "_id" : ObjectId("59f02a09693e364a54d13407"),
+    "street" : null,
+    "city" : null,
+    "name" : null,
+    "updateTime" : null,
+    "_class" : "PostalAddress",
+    "__v" : 0
+}
+
+
+{
+    "_id" : ObjectId("59f02aec693e364a54d13408"),
+    "street" : null,
+    "city" : null,
+    "name" : null,
+    "updateTime" : null,
+    "_class" : "PostalAddress",
+    "__v" : 0
+}
+
+
+{
+    "_id" : ObjectId("59f02caa693e364a54d13409"),
+    "street" : null,
+    "city" : null,
+    "name" : null,
+    "updateTime" : null,
+    "_class" : "PostalAddress",
+    "__v" : 0
+}
+
+
+{
+    "_id" : ObjectId("59f02d1f693e364a54d1340a"),
+    "street" : null,
+    "city" : null,
+    "name" : null,
+    "updateTime" : null,
+    "_class" : "PostalAddress",
+    "__v" : 0
+}
+
+
+{
+    "_id" : ObjectId("59f02d40693e364a54d1340b"),
+    "street" : null,
+    "city" : null,
+    "name" : null,
+    "updateTime" : null,
+    "_class" : "PostalAddress",
+    "__v" : 0
+}
+
+
+{
+    "_id" : ObjectId("59f034e7693e364a54d1340c"),
+    "street" : null,
+    "city" : null,
+    "name" : null,
+    "updateTime" : null,
+    "_class" : "PostalAddress",
+    "__v" : 0
+}
+
+
+{
+    "_id" : ObjectId("59f40d4e693e364a54d1340d"),
+    "street" : null,
+    "city" : null,
+    "name" : null,
+    "updateTime" : null,
+    "_class" : "PostalAddress",
+    "__v" : 0
+}
+
+
+{
+    "_id" : ObjectId("5a1e5d8e47aad37d8e81408e"),
+    "street" : null,
+    "city" : null,
+    "name" : null,
+    "updateTime" : null,
+    "_class" : "PostalAddress",
+    "__v" : 0
+}
+
+
+{
+    "_id" : ObjectId("5a1e63ef47aad37d8e81408f"),
+    "description" : null,
+    "name" : "Soboba",
+    "updateTime" : null,
+    "_class" : "Site",
+    "__v" : 0
+}
+
+
+{
+    "_id" : ObjectId("5abb370817deea16fdd94933"),
+    "givenName" : "Christopher",
+    "surName" : "Smith",
+    "name" : null,
+    "updateTime" : null,
+    "_class" : "Person",
+    "__v" : 0
+}
+
+
+{
+    "_id" : ObjectId("5abb3c4a17deea16fdd94935"),
+    "emailAddress" : null,
+    "webSiteUrl" : null,
+    "facebookPage" : null,
+    "name" : "United States Hang Gliding and Paragliding Association",
+    "updateTime" : null,
+    "_class" : "Club",
+    "__v" : 0
+}
+
+
+{
+    "_id" : ObjectId("5abc72917b064f0474817bf0"),
+    "givenName" : "Roy",
+    "surName" : "Haggard",
+    "updateTime" : null,
+    "_class" : "Person",
+    "__v" : 0
+}
+
+
+{
+    "_id" : ObjectId("5abb3d7217deea16fdd94936"),
+    "joined" : null,
+    "renewal" : null,
+    "membershipId" : "31393",
+    "updateTime" : null,
+    "_class" : "Membership",
+    "__v" : 0,
+    "club" : ObjectId("5abb3c4a17deea16fdd94935"),
+    "person" : ObjectId("5abb370817deea16fdd94933")
+}
+
+
+{
+    "_id" : ObjectId("5ac460e5a8c38f1e4eefd715"),
+    "_class" : "MapMarker",
+    "description" : "Palomar LZ",
+    "location" : ObjectId("5b2dde2790215e4ec7f303c3"),
+    "name" : "Palomar LZ"
+}
+
+
+{
+    "_id" : ObjectId("5a1e647a47aad37d8e814090"),
+    "description" : null,
+    "name" : "Palomar",
+    "updateTime" : null,
+    "_class" : "Site",
+    "__v" : 0,
+    "map" : ObjectId("5acf797fa8c38f1e4eefd716")
+}
+
+
+{
+    "_id" : ObjectId("5acf797fa8c38f1e4eefd716"),
+    "zoomLevel" : 12,
+    "name" : "LZ",
+    "_class" : "Map",
+    "description" : "LZ",
+    "siteMarker" : ObjectId("5ac460e5a8c38f1e4eefd715"),
+    "markers" : [
+        ObjectId("5b7cf0dd74078a57971106d4"),
+        ObjectId("5b7cfde8b638be60fae4d86f")
+    ],
+    "updateTime" : null,
+    "__v" : 4
+}
+
+
+{
+    "_id" : ObjectId("5b2dde2790215e4ec7f303c3"),
+    "_class" : "Location",
+    "name" : "Site",
+    "description" : "Palomar LZ",
+    "longitude" : -116.9934018407226404,
+    "latitude" : 33.3230426029318778
+}
+
+
+{
+    "_id" : ObjectId("5b2de9cfa21a467073447eaf"),
+    "givenName" : "Joseph",
+    "surName" : "Person",
+    "updateTime" : null,
+    "_class" : "Person",
+    "__v" : 0
+}
+
+
+{
+    "_id" : ObjectId("5b7ce1274dfbba3036212369"),
+    "emailAddress" : null,
+    "webSiteUrl" : null,
+    "facebookPage" : null,
+    "name" : "Soboba Flyers",
+    "updateTime" : null,
+    "_class" : "Club",
+    "__v" : 0
+}
+
+
+{
+    "_id" : ObjectId("5b7cf0dd74078a57971106d4"),
+    "description" : null,
+    "name" : "Main Launch",
+    "updateTime" : null,
+    "_class" : "MapMarker",
+    "__v" : 0,
+    "location" : ObjectId("5b7cf0dd74078a57971106d3")
+}
+
+
+{
+    "_id" : ObjectId("5b7cfcd5b638be60fae4d86b"),
+    "name" : "PalomarLocation3",
+    "latitude" : null,
+    "longitude" : null,
+    "updateTime" : null,
+    "_class" : "Location",
+    "__v" : 0
+}
+
+
+{
+    "_id" : ObjectId("5b7cfd7bb638be60fae4d86d"),
+    "name" : "PalomarLocation2",
+    "latitude" : null,
+    "longitude" : null,
+    "updateTime" : null,
+    "_class" : "Location",
+    "__v" : 0
+}
+
+
+{
+    "_id" : ObjectId("5b7cfdc8b638be60fae4d86e"),
+    "name" : "PalomarLocation2",
+    "latitude" : 33.3293913295341326,
+    "longitude" : -116.9798005868461814,
+    "updateTime" : null,
+    "_class" : "Location",
+    "__v" : 0
+}
+
+
+{
+    "_id" : ObjectId("5b7cfde8b638be60fae4d86f"),
+    "description" : null,
+    "name" : "Bailout LZ",
+    "updateTime" : null,
+    "_class" : "MapMarker",
+    "__v" : 0,
+    "location" : ObjectId("5b7cfdc8b638be60fae4d86e")
+}

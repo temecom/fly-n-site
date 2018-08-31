@@ -12,25 +12,26 @@ site:
   members: "Members"
   memberships: "Memberships"
   person: "Person"
-  people: "People" 
+  people: "People"
   pilots: "Pilots"
   pilot: "Pilot"
   weather: "Weather"
   administration: "Administration"
-  overview: 
+  overview:
     title: "Site Summary"
-    description: "Overview of the site" 
+    description: "Overview of the site"
   calendar:
     title: "Calendar"
     description: "Upcoming Events"
   fly-n-stories:
     title: "Fly'n Stories"
     description: "Latest flying adventure and stories"
-  topFlights: 
+  topFlights:
     title: "Top Flights"
     description: "Notable flights this week"
   map:
     newMarker: "New Marker"
+    markerEditor: "Marker Editor"
 forms:
   common:
     name: "Name"

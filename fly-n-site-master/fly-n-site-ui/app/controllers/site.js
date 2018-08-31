@@ -3,6 +3,8 @@ const DEGREES_PER_METER = 1/111319.9;
 const MARKER_OFFSET = DEGREES_PER_METER * 100;
 import { hash as rsvpHash} from 'rsvp';
 export default Ember.Controller.extend({
+	markerEditorVisible: false,
+	marker: null,
 	actions: {
 		save: function() {
 			var site = this.get('model.site');
@@ -68,6 +70,21 @@ export default Ember.Controller.extend({
 				map.get('markers').pushObject(marker);
 				map.save();
 			});
-		}
+		},		/**
+				* Save the marker after modal edit
+				*/
+				saveMarker: function(formValues) {
+					// Update the marker
+					var marker = this.get('marker');
+					marker.set('name', formValues.name);
+				},
+
+				showMarkerEditor: function(marker) {
+					this.set('marker', marker);
+					this.set('markerEditorVisible', true);
+				}
+
 	}
+
+
 });
