@@ -11,15 +11,6 @@
 			</div>
 		</div>
 	</div>
-	<div id="modalPlaceHolder">
-		{{sweet-alert
-		show=markerEditorVisible
-		title=(t "site.map.markerEditor")
-		input="text"
-	  inputValue=marker.name
-	  showCancelButton=true
-		callback=(action 'saveMarker')}}
- </div>
 {{#bs-accordion selected="1" as |acc|}}
 	{{#acc.item value="1"  title=(t "forms.common.map.title")}}
 

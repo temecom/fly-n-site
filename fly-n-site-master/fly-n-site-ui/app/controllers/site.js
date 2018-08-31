@@ -2,6 +2,7 @@ import Ember from 'ember';
 const DEGREES_PER_METER = 1/111319.9;
 const MARKER_OFFSET = DEGREES_PER_METER * 100;
 import { hash as rsvpHash} from 'rsvp';
+import swal from 'npm:sweetalert2';
 export default Ember.Controller.extend({
 	markerEditorVisible: false,
 	marker: null,
@@ -80,8 +81,19 @@ export default Ember.Controller.extend({
 				},
 
 				showMarkerEditor: function(marker) {
-					this.set('marker', marker);
-					this.set('markerEditorVisible', true);
+					var inputValue = marker.title;
+					swal({
+					  title: 'Enter the marker title',
+					  input: 'text',
+					  inputValue: inputValue,
+					  showCancelButton: true,
+					  inputValidator: (value) => {
+					    return !value && 'You need to write something!'
+					  }
+					})
+					.then(function(results){
+						marker.name=results;
+					});
 				}
 
 	}
