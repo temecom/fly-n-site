@@ -81,7 +81,7 @@ export default Ember.Controller.extend({
 				},
 
 				showMarkerEditor: function(marker) {
-					var inputValue = marker.title;
+					var inputValue = marker.get('name');
 					swal({
 					  title: 'Enter the marker title',
 					  input: 'text',
@@ -91,8 +91,9 @@ export default Ember.Controller.extend({
 					    return !value && 'You need to write something!'
 					  }
 					})
-					.then(function(results){
-						marker.name=results;
+					.then(function(result){
+						marker.set('name',result.value);
+						marker.save();
 					});
 				}
 

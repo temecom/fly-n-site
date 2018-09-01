@@ -27,7 +27,7 @@
 				lng=model.site.map.siteMarker.location.longitude
 			      draggable=true
 			      onDragend=(action "dragEnd")
-					  onClick=(action "showMarkerEditor" g.marker)}}
+					  onClick=(action "showMarkerEditor")}}
 				{{#each model.site.map.markers as |marker|}}
 			    {{g.marker
 			      label=marker.name
@@ -35,7 +35,7 @@
 			      lng=marker.location.longitude
 			      draggable=true
 			      onDragend=(action "dragEnd")
-					  onClick=(action "showMarkerEditor" g.marker)}}
+					  onClick=(action "showMarkerEditor" marker)}}
 			  {{/each}}
 			{{/g-map}}
 
