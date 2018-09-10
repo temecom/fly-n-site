@@ -1,24 +1,24 @@
 // flyn-site-router.js
 
 /**
- * The system router
- * Sets up the routes
- * Executes the route functions using the Mongoose service
- */
+* The system router
+* Sets up the routes
+* Executes the route functions using the Mongoose service
+*/
 class FlyNSiteRouter {
 	constructor(app, service) {
 		this.app = app;
 		this.service = service;
 	}
 	/**
-	 * Start the routes
-	 */
+	* Start the routes
+	*/
 	route() {
 		var self = this;
 		// Main Greeting
 		this.app.get('/', function (req, res) {
 			//TODO: set up swagger
-			  res.send('Fly-n-site API');
+			res.send('Fly-n-site API');
 
 		});
 		var classes = this.service.getClasses();
@@ -27,8 +27,8 @@ class FlyNSiteRouter {
 		});
 	}
 	/**
-	 * Create a rout definition from the class definition
-	 */
+	* Create a rout definition from the class definition
+	*/
 	createRoute(classDefinition) {
 		var self = this;
 
@@ -41,8 +41,8 @@ class FlyNSiteRouter {
 			self.getEntity(self,req,res,classDefinition);
 		});
 		/**
-		 * Create a new entity
-		 */
+		* Create a new entity
+		*/
 		this.app.post('/' + classDefinition.path, function (req,res){
 			self.save(self, req, res, classDefinition);
 		});
@@ -53,12 +53,12 @@ class FlyNSiteRouter {
 	}
 
 	/**
-	 * Create and save a record
-	 * @param self the context
-	 * @param req the http request
-	 * @param res the http response
-	 * @param classsDEfinition the class definition to use
-	 */
+	* Create and save a record
+	* @param self the context
+	* @param req the http request
+	* @param res the http response
+	* @param classsDEfinition the class definition to use
+	*/
 	save(self,req, res, classDefinition) {
 		// Assuming this is from a POST request and the body of the
 		// request contained the JSON of the new "entity" item to be saved
@@ -75,37 +75,37 @@ class FlyNSiteRouter {
 		}
 
 		entity.save((err, createdEntity) => {
-		    if (err) {
-		        res.status(500).send(err);
-		    }
+			if (err) {
+				res.status(500).send(err);
+			}
 
-		    var payload = {data: self.packageEntity(classDefinition, createdEntity._doc)};
-		    console.log(payload);
-		    res.status(200).send(payload);
+			var payload = {data: self.packageEntity(classDefinition, createdEntity._doc)};
+			console.log(payload);
+			res.status(200).send(payload);
 		});
 	}
 
 	/**
-	 * Update a record
-	 * @param self the context
-	 * @param req the http request
-	 * @param res the http response
-	 * @param classsDEfinition the class definition to use
-	 */
+	* Update a record
+	* @param self the context
+	* @param req the http request
+	* @param res the http response
+	* @param classsDEfinition the class definition to use
+	*/
 	update(self,req, res, classDefinition) {
 		classDefinition.clazz.findById(req.params.id, (err, entity) => {
-		    // Handle any possible database errors
-		    if (err) {
-		        res.status(500).send(err);
-		    } else {
-		        // Update each attribute with any possible attribute that may have been submitted in the body of the request
-		        // If that attribute isn't in the request body, default back to whatever it was before.
-		    	var attributes = req.body.data.attributes;
-		    	var attributeKeys = Object.keys(attributes);
-		    	for (var index=0; index<attributeKeys.length; index++) {
-		    		var key = attributeKeys[index];
-		    		entity[key] = attributes[key];
-		    	}
+			// Handle any possible database errors
+			if (err) {
+				res.status(500).send(err);
+			} else {
+				// Update each attribute with any possible attribute that may have been submitted in the body of the request
+				// If that attribute isn't in the request body, default back to whatever it was before.
+				var attributes = req.body.data.attributes;
+				var attributeKeys = Object.keys(attributes);
+				for (var index=0; index<attributeKeys.length; index++) {
+					var key = attributeKeys[index];
+					entity[key] = attributes[key];
+				}
 
 				var relationships = req.body.data.relationships;
 				if(relationships) {
@@ -114,36 +114,38 @@ class FlyNSiteRouter {
 						var key = relationshipKeys[index];
 						var data = relationships[key].data;
 						var id;
-						if (Array.isArray(data)) {
-							// Convert array objects to id's
-							var objects = [];
-							objects = data.map(function(object) {
-								return object.id;
-							});
-							entity[key]=objects;
-						} else {
-							id = data.id;
-							entity[key]=id;
+						if (data) {
+							if (Array.isArray(data)) {
+								// Convert array objects to id's
+								var objects = [];
+								objects = data.map(function(object) {
+									return object.id;
+								});
+								entity[key]=objects;
+							} else {
+								id = data.id;
+								entity[key]=id;
+							}
 						}
 					}
 				}
 
-		        // Save the updated document back to the database
-		        entity.save((err, updatedEntity) => {
-		            if (err) {
-		                res.status(500).send(err)
-		            }
-		            var payload = {data: self.packageEntity(classDefinition, updatedEntity._doc)};
-		            res.status(200).send(payload);
-		        });
-		    }
+				// Save the updated document back to the database
+				entity.save((err, updatedEntity) => {
+					if (err) {
+						res.status(500).send(err)
+					}
+					var payload = {data: self.packageEntity(classDefinition, updatedEntity._doc)};
+					res.status(200).send(payload);
+				});
+			}
 		});
 	}
 	/**
-	 * Get a list of entities using the optional passed query parameters as a JSON hash in the form:
-	 * {"parameter":"value"}
-	 * See: http://mongoosejs.com/docs/api.html#find_find
-	 */
+	* Get a list of entities using the optional passed query parameters as a JSON hash in the form:
+	* {"parameter":"value"}
+	* See: http://mongoosejs.com/docs/api.html#find_find
+	*/
 	getAllEntities(self,req, res, classDefinition) {
 
 		var type = classDefinition.type;
@@ -152,8 +154,8 @@ class FlyNSiteRouter {
 		if (queryParameter) {
 			query = JSON.parse(queryParameter);
 			/**
-			 * Check for a regex
-			 */
+			* Check for a regex
+			*/
 			var key = Object.keys(query)[0];
 			var value = query[key];
 			if (value.includes('/'))  {
@@ -165,17 +167,17 @@ class FlyNSiteRouter {
 		}
 
 
-		  self.service.findAll(type, query)
-	  		.then(function(rawEntities){
-	  			var entities = rawEntities.map(function(entity){
-	  				return this.packageEntity(classDefinition,entity._doc);
-	  			}, self);
-	  			var payload = {data:entities}
-	  			res.send(payload);
-			})
-			.catch(function(err) {
-				res.send(self.packageError("Failed to find entities", err,501));
-			});
+		self.service.findAll(type, query)
+		.then(function(rawEntities){
+			var entities = rawEntities.map(function(entity){
+				return this.packageEntity(classDefinition,entity._doc);
+			}, self);
+			var payload = {data:entities}
+			res.send(payload);
+		})
+		.catch(function(err) {
+			res.send(self.packageError("Failed to find entities", err,501));
+		});
 	}
 
 
@@ -183,20 +185,20 @@ class FlyNSiteRouter {
 	getEntity(self,req, res, classDefinition) {
 		var type = classDefinition.type;
 		var id = req.params.id;
-		  self.service.findById(type, id)
-	  		.then(function(entity){
-	  			var payload = {data: self.packageEntity(classDefinition, entity._doc)};
-	  			res.send(payload);
-			})
-			.catch(function(err) {
-				var error = self.packageError("Failed to find entity", err,404);
-				res.send(error);
+		self.service.findById(type, id)
+		.then(function(entity){
+			var payload = {data: self.packageEntity(classDefinition, entity._doc)};
+			res.send(payload);
+		})
+		.catch(function(err) {
+			var error = self.packageError("Failed to find entity", err,404);
+			res.send(error);
 		});
 
 	}
 	/**
-	 * Package the entity given the classDefinition and entity retrieved
-	 */
+	* Package the entity given the classDefinition and entity retrieved
+	*/
 	packageEntity(classDefinition, entity) {
 		var type = classDefinition.type;
 		var relationships = {};
@@ -239,8 +241,8 @@ class FlyNSiteRouter {
 	}
 
 	/**
-	 * Package an error
-	 */
+	* Package an error
+	*/
 	packageError(title, err, status) {
 		return {errors: {title: title, detail: err.message, status:status} };
 	}

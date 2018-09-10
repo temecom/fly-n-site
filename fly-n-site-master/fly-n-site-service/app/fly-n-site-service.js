@@ -8,8 +8,8 @@ const Club = require('./model/club');
 const initialData = require('../config/initial-data.json');
 var classes = {};
 /**
- * The site service 
- *  - provide the repository  functions for Fly-N-Site 
+ * The site service
+ *  - provide the repository  functions for Fly-N-Site
  */
 class FlyNSiteService {
 	constructor() {
@@ -23,10 +23,16 @@ class FlyNSiteService {
 		classes.map = {type:'map',path: 'maps', clazz:require('./model/map')};
 		classes.location = {type:'location',path: 'locations', clazz:require('./model/location')};
 		classes.event = {type:'event',path: 'events', clazz:require('./model/event')};
+		classes.chat = {type:'chat',path: 'chats', clazz:require('./model/chat')};
+		classes.chatStatus = {type:'chatStatus',path: 'chatStatuses', clazz:require('./model/chatStatus')};
+		classes.chatPost = {type:'chatPost',path: 'chatPosts', clazz:require('./model/chatPost')};
+		classes.chatPostStatus = {type:'chatPostStatus',path: 'chatPostStatuses', clazz:require('./model/chatPostStatus')};
+		classes.regulation = {type:'regulation',path: 'regulations', clazz:require('./model/regulation')};
+		classes.regulationStatus = {type:'regulationStatus',path: 'regulationStatuses', clazz:require('./model/regulationStatus')};
 	}
-	
+
 	/**
-	 * Open the connection to the Mongo DB 
+	 * Open the connection to the Mongo DB
 	 */
 	open() {
 		var db = mongoose.connection;
@@ -37,11 +43,11 @@ class FlyNSiteService {
 		mongoose.connect(mongoUrl);
 		this.checkData();
 	}
-	
+
 	checkData() {
 		var self = this;
 		this.findAll('country')
-		.then(function(countries){		
+		.then(function(countries){
 
 			if (countries.length===0) {
 				initialData.forEach(function(entry){
@@ -52,12 +58,12 @@ class FlyNSiteService {
 		});
 
 	}
-	
+
 	getClasses() {
-		return classes; 
+		return classes;
 	}
 	/**
-	 * Save the model 
+	 * Save the model
 	 */
 	save(model) {
 		console.log("Saving:" + model);
@@ -67,9 +73,9 @@ class FlyNSiteService {
 		return model.save(function(err, model){
 			if(err) { return console.error('Failed to save' + model);}
 			return model;
-		});		
+		});
 	}
-	
+
 	addClub(name) {
 		var club = new Club(name)
 		this.post(club);
@@ -79,13 +85,13 @@ class FlyNSiteService {
 	 */
 	findAllClubs() {
 		return Club.find().exec();
-		
+
 	}
-	
+
 	/**
-	 * Find by the passed JSON query hash in the form: 
-	 * 
-	 * {"attribute1":"value1",...} 
+	 * Find by the passed JSON query hash in the form:
+	 *
+	 * {"attribute1":"value1",...}
 	 */
 	findAll(type, query) {
 		var clazz = classes[type].clazz;
@@ -97,11 +103,11 @@ class FlyNSiteService {
 	findClubById(id)  {
 		return Club.findById(id).exec();
 	}
-	
+
 	findById(type, id)  {
 		var clazz = classes[type].clazz;
 		return clazz.findById(id).exec();
 	}
 }
 
-module.exports = FlyNSiteService; 
+module.exports = FlyNSiteService;

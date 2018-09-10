@@ -1,8 +1,8 @@
 //app/models/site
 
 /*
-* (C)  Copyright 2017,  FlyNSite  
- * All rights reserved 
+* (C)  Copyright 2017,  FlyNSite
+ * All rights reserved
 */
 
 /**
@@ -18,8 +18,8 @@ var options = {discriminatorKey: '_class'};
 var Site = FlynSiteEntity.discriminator('Site',new Schema({
 
     description: String,
-    map: {type: Schema.Types.ObjectId, ref: 'Map'}
-
+    map: {type: Schema.Types.ObjectId, ref: 'Map'},
+    regulations: [{type: Schema.Types.ObjectId, ref: 'Regulation'}]
 }, FlynSiteEntity.options));
 
 module.exports = Site;

@@ -22,8 +22,8 @@ module.exports = function(environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
     }
-    
-    
+
+
   };
 
   if (environment === 'development') {
@@ -42,7 +42,11 @@ module.exports = function(environment) {
 			  // client: undefined,
 			  // channel: undefined,
 			  // baseUrl: '//maps.googleapis.com/maps/api/js'
-			}
+			};
+    ENV.APP['flyNSite'] = {
+      defaultLatitude: 37.5,
+      defaultLongitude: -117.0
+    };
   }
 
   if (environment === 'test') {

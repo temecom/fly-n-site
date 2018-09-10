@@ -45,6 +45,7 @@
     "ember-load-initializers": "^1.0.0",
     "ember-resolver": "^4.0.0",
     "ember-source": "~2.14.0",
+    "ember-truth-helpers": "^2.1.0",
     "loader.js": "^4.2.3",
     "sweetalert2": "^7.26.12",
     "text-mask-addons": "^1.0.1"

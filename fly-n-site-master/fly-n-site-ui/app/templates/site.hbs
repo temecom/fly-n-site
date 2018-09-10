@@ -1,16 +1,10 @@
 <!-- The site editor page -->
-	<div class="card">
-	<div class="card-header">
-		<h5>{{model.site.name}}</h5>
-			<div class="btn-group collapsed">
-				<button type="button" class="btn btn-secondary"
-					data-dismiss="modal">{{t "user.close"}}</button>
-				<button id="saveButton"
-					class="btn btn-primary"
-					{{action "save"}} data-dismiss="modal" >{{t "user.save"}}</button>
-			</div>
-		</div>
-	</div>
+{{site-menu
+	site = model.site
+	save=(action "save")
+	newMap=(action "newMap")
+	newMarker = (action "newMarker")
+}}
 {{#bs-accordion selected="1" as |acc|}}
 	{{#acc.item value="1"  title=(t "forms.common.map.title")}}
 
@@ -27,7 +21,7 @@
 				lng=model.site.map.siteMarker.location.longitude
 			      draggable=true
 			      onDragend=(action "dragEnd")
-					  onClick=(action "showMarkerEditor")}}
+					  onClick=(action "showMarkerEditor" model.site.map.siteMarker)}}
 				{{#each model.site.map.markers as |marker|}}
 			    {{g.marker
 			      label=marker.name
@@ -60,24 +54,23 @@
 
 	</div>
 	{{/acc.item}}
+	{{#acc.item value="3" title=(t "forms.common.predictor")}}
+	<div class="card" id="siteModal">
+		<div class="card-body">
+			{{flynsite-windgram}}
+		</div>
+
+	</div>
+	{{/acc.item}}
 
 
 {{/bs-accordion}}
-<div class="card">
-<div class="card-header">
-		<div class="btn-group collapsed">
-			<button type="button" class="btn btn-secondary"
-				data-dismiss="modal">{{t "user.close"}}</button>
-			<button id="saveButton"
-				class="btn btn-primary"
-				{{action "save"}} data-dismiss="modal" >{{t "user.save"}}</button>
-			<button id="newMarkerButton"
-				class="btn btn-primary"
-				{{action "newMarker"}} data-dismiss="modal" >{{t "site.map.newMarker"}}</button>
-
-		</div>
-	</div>
-</div>
+{{site-menu
+	site = model.site
+	save=(action "save")
+	newMap=(action "newMap")
+	newMarker = (action "newMarker")
+}}
 
 
 {{outlet}}

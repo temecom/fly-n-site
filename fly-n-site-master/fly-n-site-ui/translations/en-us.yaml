@@ -17,6 +17,9 @@ site:
   pilot: "Pilot"
   weather: "Weather"
   administration: "Administration"
+  groupTopics:
+    title: "Group Chat Topics"
+    description: "Current topics in the private chat rooms"
   overview:
     title: "Site Summary"
     description: "Overview of the site"
@@ -31,7 +34,9 @@ site:
     description: "Notable flights this week"
   map:
     newMarker: "New Marker"
+    newSiteMarker: "Site Marker"
     markerEditor: "Marker Editor"
+    newMap: "Create a Map"
 forms:
   common:
     name: "Name"
@@ -44,6 +49,7 @@ forms:
     webSiteUrl: "Web Site URL"
     id: "ID"
     facebookPage: "Facebook Page"
+    predictor: "Windgram"
     address:
       title: "Mailing Address"
       street: "Street"
@@ -60,5 +66,7 @@ user:
   new: "New"
   edit: "Edit"
   close: "Close"
+chat:
+  addNewTopic: "Add new Topic"
 administration:
   title: "Administration"

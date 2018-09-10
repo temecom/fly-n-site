@@ -1,0 +1,28 @@
+<div class="card">
+  <div class="card-header">
+    <div class="btn-group collapsed">
+      <button type="button" class="btn btn-secondary"
+      data-dismiss="modal">{{t "user.close"}}</button>
+      <button id="saveButton"
+      class="btn btn-primary"
+      {{action "save"}} data-dismiss="modal" >{{t "user.save"}}</button>
+      {{#if site.map }}
+      {{#if site.map.siteMarker}}
+      <button id="newMarkerButton"
+      class="btn btn-primary"
+      {{action "newMarker" "LANDMARK"}} data-dismiss="modal" >{{t "site.map.newMarker"}}</button>
+      {{else}}
+
+      <button id="newSiteMarkerButton"
+      class="btn btn-primary"
+      {{action "newMarker" "SITE"}} data-dismiss="modal" >{{t "site.map.newSiteMarker"}}</button>
+      {{/if}}
+      {{else }}
+      <button id="newMapButton"
+      class="btn btn-primary"
+      {{action "newMap"}} data-dismiss="modal" >{{t "site.map.newMap"}}</button>
+      {{/if}}
+    </div>
+  </div>
+</div>
+{{yield}}
