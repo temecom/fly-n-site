@@ -1,8 +1,8 @@
 //app/models/person
 
 /*
-* (C)  Copyright 2017, FlynSite.  
- * All rights reserved 
+* (C)  Copyright 2017, FlynSite.
+ * All rights reserved
 */
 
 /**
@@ -20,6 +20,7 @@ export default FlynSiteEntity.extend({
     surName: DS.attr('string'),
     birthDate: DS.attr('date'),
     contactMethods: DS.hasMany('contactMethod',{async:true}),
+    memberships: DS.hasMany('membership',{async:true}),
     name: computed('surName', 'givenName', function() {
         let givenName = this.get('givenName');
         let surName = this.get('surName');

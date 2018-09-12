@@ -1,8 +1,8 @@
 //app/models/Person
 
 /*
-* (C)  Copyright 2017, FlyNSite 
- * All rights reserved 
+* (C)  Copyright 2017, FlyNSite
+ * All rights reserved
 */
 
 /**
@@ -16,7 +16,10 @@ var FlynSiteEntity = require('./flynSiteEntity');
 var options = {discriminatorKey: '_class'};
 var Person = FlynSiteEntity.discriminator('Person',new Schema({
     surName: String,
-    givenName: String
+    givenName: String,
+    birthDate: Date,
+  //  contactMethods: [{type: Schema.Types.ObjectId, ref: 'ContactMethod'}],
+    memberships: [{type: Schema.Types.ObjectId, ref: 'Membership'}]
 },options));
 
 module.exports = Person;

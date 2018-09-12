@@ -1,8 +1,8 @@
 //app/models/Club
 
 /*
-* (C)  Copyright 2017, FlyNSite 
- * All rights reserved 
+* (C)  Copyright 2017, FlyNSite
+ * All rights reserved
 */
 
 /**
@@ -17,7 +17,8 @@ var options = {discriminatorKey: '_class'};
 var Club = FlynSiteEntity.discriminator('Club',new Schema({
     emailAddress: String,
     webSiteUrl: String,
-    facebookPage: String
+    facebookPage: String,
+    memberships: [{type: Schema.Types.ObjectId, ref: 'Membership'}]
 },options));
 
 module.exports = Club;

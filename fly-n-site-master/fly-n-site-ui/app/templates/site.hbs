@@ -40,6 +40,7 @@
 			model=model.site
 			onSubmit=(action "save") as |form|}}
 				{{form.element
+					disabled=true
 					property="id"
 					placeholder=(t "forms.common.id")
 					label=(t "forms.common.id")
@@ -49,6 +50,11 @@
 					placeholder=(t "forms.common.name")
 					label=(t "forms.common.name")
 				}}
+				{{form.element
+					property="windgramKey"
+					placeholder=(t "forms.site.windgramKey")
+					label=(t "forms.site.windgramKey")
+				}}
 			{{/bs-form}}
 		</div>
 
@@ -57,7 +63,7 @@
 	{{#acc.item value="3" title=(t "forms.common.predictor")}}
 	<div class="card" id="siteModal">
 		<div class="card-body">
-			{{flynsite-windgram}}
+			{{flynsite-windgram key=model.site.windgramKey}}
 		</div>
 
 	</div>

@@ -5,50 +5,50 @@
 			<div class="btn-group collapsed">
 				<button type="button" class="btn btn-secondary"
 					data-dismiss="modal">{{t "user.close"}}</button>
-				<button id="saveButton" 
+				<button id="saveButton"
 					class="btn btn-primary"
 					{{action "save"}} data-dismiss="modal" >{{t "user.save"}}</button>
-								
+
 			</div>
 		</div>
 	</div>
-{{#bs-accordion selected="1" as |acc|}}	
+{{#bs-accordion selected="1" as |acc|}}
 	{{#acc.item value="1" title=(t "forms.common.identity")}}
 	<div class="card" id="personModal">
 		<div class="card-body">{{#bs-form formLayout=formLayout
-			model=model.person 
-			onSubmit=(action "save") as |form|}} 
+			model=model.person
+			onSubmit=(action "save") as |form|}}
 				{{form.element
-					enabled=false
-					property="id" 
-					placeholder=(t "forms.common.id") 
+					disabled=true
+					property="id"
+					placeholder=(t "forms.common.id")
 					label=(t "forms.common.id")
-				}} 
-				{{form.element 
-					property="givenName" 
-					placeholder=(t "forms.common.givenName") 
-					label=(t "forms.common.givenName")
-				}} 
-				{{form.element 
-					property="surName" 
-					placeholder=(t "forms.common.surName") 
-					label=(t "forms.common.surName")
-				}} 
+				}}
 				{{form.element
-					property="emailAddress" 
+					property="givenName"
+					placeholder=(t "forms.common.givenName")
+					label=(t "forms.common.givenName")
+				}}
+				{{form.element
+					property="surName"
+					placeholder=(t "forms.common.surName")
+					label=(t "forms.common.surName")
+				}}
+				{{form.element
+					property="emailAddress"
 					placeholder=(t "forms.common.email")
 					label=(t "forms.common.email")
-				}} 
+				}}
 				{{form.element
-					property="webSiteUrl" 
+					property="webSiteUrl"
 					placeholder=(t "forms.common.webSiteUrl")
 					label=(t "forms.common.webSiteUrl")
-				}} 
+				}}
 				{{form.element
-					property="facebookPage" 
+					property="facebookPage"
 					placeholder=(t "forms.common.facebookPage")
 					label=(t "forms.common.webSiteUrl")
-				}} 
+				}}
 			{{/bs-form}}
 		</div>
 
@@ -58,21 +58,22 @@
 	<div class="card">
 			<div class="card-body">
 			{{address-input
-				address=model.person.postalAddress 
+				address=model.person.postalAddress
 				addressee=model.person.name
-				countries=model.countries 
+				countries=model.countries
 				save=(action "saveAddress")
-				}} 
+				}}
 
 		</div>
 	</div>
 	{{/acc.item}}
 	{{#acc.item value="3" title=(t "site.memberships")}}
-	<div class="card">
-		<div class="card-body">
-			 {{entity-list items=model.person.memberships}}
-		</div>
-	</div>
+			 {{entity-list
+				 items=model.person.memberships
+				 newEntity=(action "newMembership")
+				 itemSelected = (action "membershipSelected")
+			 }}
+			 {{membership-editor membership=selectedMembership save=(action "saveMembership")}}
 	{{/acc.item}}
 {{/bs-accordion}}
 <div class="card">
@@ -80,10 +81,10 @@
 		<div class="btn-group collapsed">
 			<button type="button" class="btn btn-secondary"
 				data-dismiss="modal">{{t "user.close"}}</button>
-			<button id="saveButton" 
+			<button id="saveButton"
 				class="btn btn-primary"
 				{{action "save"}} data-dismiss="modal" >{{t "user.save"}}</button>
-							
+
 		</div>
 	</div>
 </div>

@@ -19,7 +19,8 @@ var Site = FlynSiteEntity.discriminator('Site',new Schema({
 
     description: String,
     map: {type: Schema.Types.ObjectId, ref: 'Map'},
-    regulations: [{type: Schema.Types.ObjectId, ref: 'Regulation'}]
+    regulations: [{type: Schema.Types.ObjectId, ref: 'Regulation'}],
+    windgramKey: String
 }, FlynSiteEntity.options));
 
 module.exports = Site;

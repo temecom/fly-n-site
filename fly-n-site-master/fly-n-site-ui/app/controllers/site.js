@@ -117,8 +117,10 @@ export default Ember.Controller.extend({
 				}
 			})
 			.then(function(result){
-				marker.set('name',result.value);
-				marker.save();
+				if (!result.dismiss) {
+					marker.set('name',result.value);
+					marker.save();
+				}
 			});
 		},
 		/**

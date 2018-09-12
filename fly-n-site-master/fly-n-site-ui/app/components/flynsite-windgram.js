@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import {computed} from '@ember/object';
 export default Ember.Component.extend({
-  windgramKey: 'Soboba',
+  key: null,
   futureDays: 0,
   futureDaysTag: computed('futureDays',  function() {
     var futureDays = this.get('futureDays');

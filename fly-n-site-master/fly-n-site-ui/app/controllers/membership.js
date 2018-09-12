@@ -7,12 +7,12 @@ export default Ember.Controller.extend({
 			if (member.save) {
 				member.save();
 			} else {
-			
+
 				member.then(function(member){
 					member.save();
 				});
 			}
-			
+
 		},
 		clubSelected: function(club) {
 			var member = this.get('model.membership');
@@ -21,6 +21,9 @@ export default Ember.Controller.extend({
 		personSelected: function(person) {
 			var member = this.get('model.membership');
 			member.set('person', person);
+		},
+		memebershipSelected: function(membership) {
+			this.set('selectedMembership', membership);
 		}
 	}
 });

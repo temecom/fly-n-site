@@ -14,6 +14,16 @@ import FlynSiteEntity from '../models/flyn-site-entity';
 export default FlynSiteEntity.extend({
 
 	description: DS.attr('string'),
+	/*
+	* The site map
+	*/
 	map: DS.belongsTo('Map'),
-	regulations: DS.hasMany('Regulation')
+	/*
+	* Site regulations
+	*/
+	regulations: DS.hasMany('Regulation'),
+	/*
+	* The key to access the windgram
+	*/
+	windgramKey: DS.attr('string')
 });

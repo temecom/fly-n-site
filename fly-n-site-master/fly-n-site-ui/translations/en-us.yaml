@@ -38,13 +38,15 @@ site:
     markerEditor: "Marker Editor"
     newMap: "Create a Map"
 forms:
+  membership:
+    editor: "Membership Editor"
+    membershipId: "Membership Id"
+    joinDate: "Member Since"
+    renewalDate: "Renewal Date"
   common:
     name: "Name"
     givenName: "Given Name"
     surName: "Surname"
-    renewalDate: "Renewal Date"
-    joinDate: "Member Since"
-    membershipId: "Membership Id"
     email: "E-Mail"
     webSiteUrl: "Web Site URL"
     id: "ID"
@@ -61,6 +63,8 @@ forms:
     identity: "Identity"
     map:
       title: "Map"
+  site:
+    windgramKey: "Windgram Key"
 user:
   save: "Save"
   new: "New"
