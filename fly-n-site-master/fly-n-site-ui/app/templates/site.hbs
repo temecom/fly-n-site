@@ -6,23 +6,23 @@
 	newMarker = (action "newMarker")
 }}
 {{#bs-accordion selected="1" as |acc|}}
-	{{#acc.item value="1"  title=(t "forms.common.map.title")}}
+	{{#acc.item value="1"  title=(t "forms.map.title")}}
 
 			{{#g-map
-				lat=model.site.map.siteMarker.location.latitude
-				lng=model.site.map.siteMarker.location.longitude
-				zoom=model.site.map.zoomLevel
+				lat=model.siteMarkerLocation.latitude
+				lng=model.siteMarkerLocation.longitude
+				zoom=model.map.zoomLevel
 				mapTypeId='terrain'
 				as |g| }}
 				{{g.canvas}}
 				{{g.marker
-			      label=model.site.map.siteMarker.name
-			      lat=model.site.map.siteMarker.location.latitude
-				lng=model.site.map.siteMarker.location.longitude
+			      label=model.siteMarker.name
+			      lat=model.siteMarkerLocation.latitude
+				lng=model.siteMarkerLocation.longitude
 			      draggable=true
 			      onDragend=(action "dragEnd")
-					  onClick=(action "showMarkerEditor" model.site.map.siteMarker)}}
-				{{#each model.site.map.markers as |marker|}}
+					  onClick=(action "showMarkerEditor" model.siteMarker)}}
+				{{#each model.map.markers as |marker|}}
 			    {{g.marker
 			      label=marker.name
 			      lat=marker.location.latitude
@@ -33,10 +33,33 @@
 			  {{/each}}
 			{{/g-map}}
 
+			<!-- location -->
+			{{#bs-form formLayout=formLayout
+				model=model
+				onSubmit=(action "save") as |form|}}
+					{{form.element
+						property="siteMarkerLocation.latitude"
+						placeholder=(t "forms.map.location.latitude")
+						label=(t "forms.map.location.latitude")
+					}}
+					{{form.element
+						property="siteMarkerLocation.longitude"
+						placeholder=(t "forms.map.location.longitude")
+						label=(t "forms.map.location.longitude")
+					}}
+
+					{{form.element
+						property="map.zoomLevel"
+						placeholder=(t "forms.map.zoomLevel")
+						label=(t "forms.map.zoomLevel")
+					}}
+				{{/bs-form}}
+
 	{{/acc.item}}
 	{{#acc.item value="2" title=(t "forms.common.identity")}}
 	<div class="card" id="siteModal">
-		<div class="card-body">{{#bs-form formLayout=formLayout
+		<div class="card-body">
+		{{#bs-form formLayout=formLayout
 			model=model.site
 			onSubmit=(action "save") as |form|}}
 				{{form.element
@@ -55,6 +78,16 @@
 					placeholder=(t "forms.site.windgramKey")
 					label=(t "forms.site.windgramKey")
 				}}
+				{{form.element
+					property="map.siteMarker.location.latitude"
+					placeholder=(t "forms.map.location.latitude")
+					label=(t "forms.map.location.latitude")
+				}}
+				{{form.element
+					property="map.siteMarker.location.longitude"
+					placeholder=(t "forms.map.location.longitude")
+					label=(t "forms.map.location.longitude")
+				}}
 			{{/bs-form}}
 		</div>
 
@@ -65,7 +98,20 @@
 		<div class="card-body">
 			{{flynsite-windgram key=model.site.windgramKey}}
 		</div>
-
+		<div class="card-footer">
+		{{#bs-dropdown as |dropdown|}}
+		  {{#bs-button}}Future{{/bs-button}}
+		  {{#dropdown.button}}<span class="caret"></span>{{/dropdown.button}}
+		  {{#dropdown.menu as |dayMenu|}}
+		    {{#dayMenu.item}}
+		      {{#bs-button id="day0button" type="info" onClick=(action "changeDays" 0 )  }}Current{{/bs-button}}
+		    {{/dayMenu.item}}
+		    {{#dayMenu.item}}
+		      {{#bs-button id="day1button" type="info" onClick=(action "changeDays" 1 ) }}+1{{/bs-button}}
+		    {{/dayMenu.item}}
+		  {{/dropdown.menu}}
+		{{/bs-dropdown}}
+	</div>
 	</div>
 	{{/acc.item}}
 

@@ -12,15 +12,22 @@ export default Route.extend({
 		.then(function(model){
 			if (model.map) {
 				model.markers = model.map.get('markers');
+				model.siteMarker = model.map.get('siteMarker');
 			}
 			return rsvpHash (model);
 		})
 		.then(function(model){
+			if (model.siteMarker) {
+				model.siteMarkerLocation = model.siteMarker.get('location');
+			}
 			if (model.markers) {
 				model.locations = model.markers.map(function(marker){
 					return marker.get('location');
 				});
 			}
+			return rsvpHash (model);
+		})
+		.then(function(model){
 			return model;
 		});
 	}

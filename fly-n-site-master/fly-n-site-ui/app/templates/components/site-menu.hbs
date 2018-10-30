@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-header">
-    <div class="btn-group collapsed">
+    <div class="btn-group collapsed pull-right ">
       <button type="button" class="btn btn-secondary"
       data-dismiss="modal">{{t "user.close"}}</button>
       <button id="saveButton"
@@ -22,6 +22,9 @@
       class="btn btn-primary"
       {{action "newMap"}} data-dismiss="modal" >{{t "site.map.newMap"}}</button>
       {{/if}}
+    </div>
+    <div class="pull-left blockquote">
+    	{{site.name}}
     </div>
   </div>
 </div>

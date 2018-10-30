@@ -61,8 +61,12 @@ forms:
       country: "Country"
     general: "General"
     identity: "Identity"
-    map:
-      title: "Map"
+  map:
+    title: "Map"
+    zoomLevel: "Zoom"
+    location:
+      latitude: "Latitude"
+      longitude: "Longitude"
   site:
     windgramKey: "Windgram Key"
 user:

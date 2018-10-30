@@ -7,15 +7,23 @@ import config from '../config/environment';
 export default Ember.Controller.extend({
 	markerEditorVisible: false,
 	marker: null,
+	saveSite: function(site) {
+		site.save();
+		this.get('model.map').save();
+		this.get('model.siteMarker').save();
+		this.get('model.siteMarkerLocation').save();
+	},
 	actions: {
 		save: function() {
+			var self = this;
 			var site = this.get('model.site');
 			if (site.save) {
-				site.save();
+				// resolved
+				self.saveSite(site);
 			} else {
-
+				// wait for resolution
 				site.then(function(site){
-					site.save();
+					self.saveSite(site);
 				});
 			}
 		},
@@ -140,7 +148,7 @@ export default Ember.Controller.extend({
 		*/
 		createMap: function(site) {
 			var self = this;
-			return this.store.createRecord('map', {'name':this.get('model.site.name')}).save()
+			return this.store.createRecord('map', {'name':this.get('model.site.name'), zoomLevel:8}).save()
 			.then (function(map){
 				// this  is new
 				var markers = [];
