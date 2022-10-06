@@ -1,14 +1,14 @@
-import Ember from 'ember';
-import {computed} from '@ember/object';
+import Ember from "ember";
+import { computed } from "@ember/object";
 export default Ember.Component.extend({
   key: null,
   futureDays: 0,
-  futureDaysTag: computed('futureDays',  function() {
-    var futureDays = this.get('futureDays');
+  futureDaysTag: computed("futureDays", function () {
+    var futureDays = this.futureDays;
     if (futureDays === 0) {
-      return '';
+      return "";
     } else {
-      return '+' + futureDays;
+      return "+" + futureDays;
     }
-  })
+  }),
 });

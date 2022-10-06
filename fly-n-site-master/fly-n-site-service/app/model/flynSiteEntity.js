@@ -1,4 +1,4 @@
-//app/model/flyn-site-entity
+//app/model/fly-n-site-entity
 
 /*
 * (C)  Copyright 2017,  FlyNSite  

@@ -8,6 +8,7 @@
 /node_modules
 /bower_components
 
+
 # misc
 /.sass-cache
 /connect.lock
@@ -26,3 +27,4 @@ package.json.ember-try
 .project
 .classes
 
+/fly-n-site-update

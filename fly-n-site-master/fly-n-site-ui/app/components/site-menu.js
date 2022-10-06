@@ -1,19 +1,21 @@
-import Ember from 'ember';
-
-export default Ember.Component.extend({
-  site: null,
-  save: null,
-  newMap: null,
-  newMarker: null,
-  actions: {
-    save: function() {
-      this.get('save')();
-    },
-    newMap: function() {
-      this.get('newMap')();
-    },
-    newMarker: function(type) {
-      this.get('newMarker')(type);
-    }
+import Component from "@glimmer/component";
+import { action } from "@ember/object";
+/**
+ * Site list
+ */
+export default class SiteMenuComponent extends Component {
+  site = null;
+  save = null;
+  newMap = null;
+  newMarker = null;
+  @action
+  save() {
+    this.save();
   }
-});
+  newMap() {
+    this.newMap();
+  }
+  newMarker(type) {
+    this.newMarker(type);
+  }
+}

@@ -9,21 +9,23 @@
  * Generated On: 2017-8-15
  * Class: Site
  */
-import DS from 'ember-data';
-import FlynSiteEntity from '../models/flyn-site-entity';
-export default FlynSiteEntity.extend({
+import { attr } from "@ember-data/model";
+import { belongsTo } from "@ember-data/model";
+import { hasMany } from "@ember-data/model";
 
-	description: DS.attr('string'),
-	/*
-	* The site map
-	*/
-	map: DS.belongsTo('Map'),
-	/*
-	* Site regulations
-	*/
-	regulations: DS.hasMany('Regulation'),
-	/*
-	* The key to access the windgram
-	*/
-	windgramKey: DS.attr('string')
-});
+import FlynSiteEntity from "../models/fly-n-site-entity";
+export default class Site extends FlynSiteEntity {
+  @attr("string") description;
+  /*
+   * The site map
+   */
+  @belongsTo("map") map;
+  /*
+   * Site regulations
+   */
+  @hasMany("regulation") regulations;
+  /*
+   * The key to access the windgram
+   */
+  @attr("string") windgramKey;
+}

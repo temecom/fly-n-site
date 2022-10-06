@@ -1,0 +1,10 @@
+# Belongs to
+(\w*): belongsTo\("(\w*)"\),
+@belongsTo($2) $1;
+
+#LinkTo
+\{\{#link-to\s?("\w*")\}\}
+<LinkTo @route=$1>
+
+\{\{/link-to\}\}
+</LinkTo>

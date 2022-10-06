@@ -1,9 +1,9 @@
-// flyn-site-service.js
+// fly-n-site-service.js
 const mongoose = require('mongoose');
 const UUID = require('uuid');
 //set Promise provider to bluebird
 mongoose.Promise = require('bluebird');
-const mongoUrl = 'mongodb://localhost/flynsite';
+const mongoUrl = 'mongodb://localhost/fly-n-site';
 const Club = require('./model/club');
 const initialData = require('../config/initial-data.json');
 var classes = {};

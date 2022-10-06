@@ -1,22 +1,19 @@
 //app/models/region
 
 /*
-* (C)  Copyright 2017, FlynSite.  
- * All rights reserved 
-*/
+ * (C)  Copyright 2017, FlynSite.
+ * All rights reserved
+ */
 
 /**
-* Generated On: 2017-8-15
-* Class: Region
-*/
+ * Generated On: 2017-8-15
+ * Class: Region
+ */
 
-import DS from 'ember-data';
-import FlynSiteEntity from '../models/flyn-site-entity';
+import DS from "ember-data";
+import FlynSiteEntity from "../models/fly-n-site-entity";
 
 export default FlynSiteEntity.extend({
-
-    country: DS.belongsTo('country',{async:true}),
-    code: DS.attr('string')
-
-
+  country: DS.belongsTo("country", { async: true }),
+  code: DS.attr("string"),
 });

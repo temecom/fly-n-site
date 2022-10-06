@@ -1,10 +1,10 @@
-import Ember from 'ember';
+import Ember from "ember";
 
 export default Ember.Component.extend({
   saveMembership: null,
   actions: {
-		save: function(item) {
-      this.get('saveMembership')(item);
-		}
-  }
+    save: function (item) {
+      this.saveMembership(item);
+    },
+  },
 });

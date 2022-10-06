@@ -1,215 +1,208 @@
-<div class="container-fluid" id="wrapper">
-	<div class="row">
-		<nav class="sidebar col-xs-12 col-sm-4 col-lg-3 col-xl-2">
-			<h1 class="site-title">
-				<a href="index.html"><em class="fa fa-paper-plane-o"></em>{{t "site.title"}}</a>
-			</h1>
+<div class="ember-view">
+  <div class="container-fluid" id="wrapper">
+  	<div class="row">
+  		<nav class="sidebar col-xs-12 col-sm-4 col-lg-3 col-xl-2">
+  			<h1 class="site-title">
+  				<a href="index.html"><em class="fa fa-paper-plane-o"></em>{{t "site.title"}}</a>
+  			</h1>
 
-			<a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><em
-				class="fa fa-bars"></em></a>
-			<ul class="nav nav-pills flex-column sidebar-nav">
-				<li class="nav-item"><a class="nav-link active"
-					href="index.html"><em class="fa fa-dashboard"></em> Dashboard <span
-						class="sr-only">(current)</span></a></li>
-				<li class="nav-item"><a class="nav-link" href="#"><em
-						class="fa fa-calendar-o"></em> {{#link-to "clubs"}}{{t 'site.clubs'}}{{/link-to}}</a></li>
-				<li class="nav-item"><a class="nav-link" href="#"><em
-						class="fa fa-calendar-o"></em> {{#link-to "people"}}{{t 'site.people'}}{{/link-to}}</a></li>
+  			<a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><em
+  				class="fa fa-bars"></em></a>
+  			<ul class="nav nav-pills flex-column sidebar-nav">
+  				<li class="nav-item"><a class="nav-link active"
+  					href="index.html"><em class="fa fa-dashboard"></em> Dashboard <span
+  						class="sr-only">(current)</span></a></li>
+  				<li class="nav-item"><a class="nav-link" href="#"><em
+  						class="fa fa-calendar-o"></em> <LinkTo @route="clubs">{{t 'site.clubs'}}</LinkTo></a></li>
+  				<li class="nav-item"><a class="nav-link" href="#"><em
+  						class="fa fa-calendar-o"></em> <LinkTo @route="people">{{t 'site.people'}}</LinkTo></a></li>
 
-					<li class="nav-item"><a class="nav-link" href="#"><em
-						class="fa fa-bar-chart"></em> {{#link-to "sites"}}{{t 'site.sites'}}{{/link-to}}</a>
-					</li>
+  					<li class="nav-item"><a class="nav-link" href="#"><em
+  						class="fa fa-bar-chart"></em> <LinkTo @route="sites">{{t 'site.sites'}}</LinkTo></a>
+  					</li>
 
-				<li class="nav-item"><a class="nav-link" href="buttons.html"><em
-						class="fa fa-hand-o-up"></em> {{t 'site.weather'}}</a></li>
-				<li class="nav-item"><a class="nav-link" href="forms.html"><em
-						class="fa fa-pencil-square-o"></em> {{t 'site.administration'}}</a></li>
-
-
-			</ul>
-			<a href="login.html" class="logout-button"><em
-				class="fa fa-power-off"></em> Signout</a>
-		</nav>
-		<main class="col-xs-12 col-sm-8 col-lg-9 col-xl-10 pt-3 pl-4 ml-auto">
-		<header class="page-header row justify-center">
-			<div class="col-md-6 col-lg-8">
-				<h1 class="float-left text-center text-md-left">Dashboard</h1>
-			</div>
-			<div
-				class="dropdown user-dropdown col-md-6 col-lg-4 text-center text-md-right">
-				<a class="btn btn-stripped dropdown-toggle" href="#"
-					id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false"> <img src="images/profile-pic.jpg"
-					alt="profile photo" class="circle float-left profile-photo"
-					width="50" height="auto">
-					<div class="username mt-1">
-						<h4 class="mb-1">Username</h4>
-						<h6 class="text-muted">Super Admin</h6>
-					</div>
-				</a>
-				<div class="dropdown-menu dropdown-menu-right"
-					style="margin-right: 1.5rem;" aria-labelledby="dropdownMenuLink">
-					<a class="dropdown-item" href="#"><em
-						class="fa fa-user-circle mr-1"></em> View Profile</a> <a
-						class="dropdown-item" href="#"><em class="fa fa-sliders mr-1"></em>
-						Preferences</a> <a class="dropdown-item" href="#"><em
-						class="fa fa-power-off mr-1"></em> Logout</a>
-				</div>
-			</div>
-			<div class="clear"></div>
-		</header>
-		<section class="row">
-			<div class="col-sm-12">
+  				<li class="nav-item"><a class="nav-link" href="buttons.html"><em
+  						class="fa fa-hand-o-up"></em> {{t 'site.weather'}}</a></li>
+  				<li class="nav-item"><a class="nav-link" href="forms.html"><em
+  						class="fa fa-pencil-square-o"></em> {{t 'site.administration'}}</a></li>
 
 
-				<section class="row">
-					<div class="col-md-12 col-lg-8">
-				{{#bs-button active=notCollapsed onClick=(action "toggle")}}
-					  {{#if collapsed}}
-					    Show
-					  {{else}}
-					    Hide
-					  {{/if}}
-					{{/bs-button}}
+  			</ul>
+  			<a href="login.html" class="logout-button"><em
+  				class="fa fa-power-off"></em> Signout</a>
+  		</nav>
+  		<main class="col-xs-12 col-sm-8 col-lg-9 col-xl-10 pt-3 pl-4 ml-auto">
+  		<header class="page-header row justify-center">
+  			<div class="col-md-6 col-lg-8">
+  				<h1 class="float-left text-center text-md-left">Dashboard</h1>
+  			</div>
+  			<div
+  				class="dropdown user-dropdown col-md-6 col-lg-4 text-center text-md-right">
+  				<a class="btn btn-stripped dropdown-toggle" href="#"
+  					id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+  					aria-expanded="false"> <img src="images/profile-pic.jpg"
+  					alt="profile photo" class="circle float-left profile-photo"
+  					width="50" height="auto">
+  					<div class="username mt-1">
+  						<h4 class="mb-1">Username</h4>
+  						<h6 class="text-muted">Super Admin</h6>
+  					</div>
+  				</a>
+  				<div class="dropdown-menu dropdown-menu-right"
+  					style="margin-right: 1.5rem;" aria-labelledby="dropdownMenuLink">
+  					<a class="dropdown-item" href="#"><em
+  						class="fa fa-user-circle mr-1"></em> View Profile</a> <a
+  						class="dropdown-item" href="#"><em class="fa fa-sliders mr-1"></em>
+  						Preferences</a> <a class="dropdown-item" href="#"><em
+  						class="fa fa-power-off mr-1"></em> Logout</a>
+  				</div>
+  			</div>
+  			<div class="clear"></div>
+  		</header>
+  		<section class="row">
+  			<div class="col-sm-12">
 
-					<hr>
 
-					{{#bs-collapse collapsed=collapsed}}
+  				<section class="row">
+  					<div class="col-md-12 col-lg-8">
+ 
+  					<hr>
 
-						<!-- Fly N Site Header -->
-						<div class="fly-n-site-header well" id="header">
-							<div class="row">
-								<div class='fly-n-site-left-image'></div>
-								<div class="fly-n-site-center">
-									<h1 class="display-3">{{t "site.title"}}</h1>
-									<p>{{t 'site.greeting'}}</p>
-									<p class="lead">
-										<a class="btn btn-outline-secondary btn-lg" href="#"
-											role="button">{{t "site.information"}}</a>
-									</p>
-								</div>
-								<div class='fly-n-site-right-image'></div>
-							</div>
+ 
+ 						<!-- Fly N Site Header -->
+  						<div class="fly-n-site-header well" id="header">
+  							<div class="row">
+  								<div class='fly-n-site-left-image'></div>
+  								<div class="fly-n-site-center">
+  									<h1 class="display-3">{{t "site.title"}}</h1>
+  									<p>{{t 'site.greeting'}}</p>
+  									<p class="lead">
+  										<a class="btn btn-outline-secondary btn-lg" href="#"
+  											role="button">{{t "site.information"}}</a>
+  									</p>
+  								</div>
+  								<div class='fly-n-site-right-image'></div>
+  							</div>
 
-						</div>
+  						</div>
 
-						{{/bs-collapse}}
-						<!-- All center content shows up here -->
-						<div class="container" id="content">
-							{{outlet}}
-						</div>
-					</div>
-					<div class="col-md-12 col-lg-4">
-						<div class="card mb-4">
-							<div class="card-block">
+  						<!-- All center content shows up here -->
+  						<div class="container" id="content">
+  							{{outlet}}
+  						</div>
+  					</div>
+  					<div class="col-md-12 col-lg-4">
+  						<div class="card mb-4">
+  							<div class="card-block">
 
-								<div id="calendar"></div>
+  								<div id="calendar"></div>
 
-								<h3 class="card-title">{{t 'site.calendar.title'}}</h3>
-								<h6 class="card-subtitle mb-2 text-muted">{{t
-									'site.calendar.description'}}</h6>
-								<ul class="timeline">
-									<li>
-										<div class="timeline-badge">
-											<em class="fa fa-camera"></em>
-										</div>
-										<div class="timeline-panel">
-											<div class="timeline-heading">
-												<h5 class="timeline-title mt-2">Annual Meeting</h5>
-											</div>
-											<div class="timeline-body">
-												<p>Annual club meeting - Board of Directors Election etc
-												</p>
-											</div>
-										</div>
-									</li>
-									<li>
-										<div class="timeline-badge primary">
-											<em class="fa fa-link"></em>
-										</div>
-										<div class="timeline-panel">
-											<div class="timeline-heading">
-												<h5 class="timeline-title mt-2">Spring Fly-in</h5>
-											</div>
-											<div class="timeline-body">
-												<p>Spring Fly-in at Palomar...</p>
-											</div>
-										</div>
-									</li>
-									<li>
-										<div class="timeline-badge">
-											<em class="fa fa-paperclip"></em>
-										</div>
-										<div class="timeline-panel">
-											<div class="timeline-heading">
-												<h5 class="timeline-title mt-2">Site Maintenance Day</h5>
-											</div>
-											<div class="timeline-body">
-												<p>Launch clearing, trail to head, windsock and weather
-													station maintenance</p>
-											</div>
-										</div>
-									</li>
-								</ul>
-							</div>
-						</div>
-					{{group-topics}}
-					</div>
-				</section>
-				<section class="row">
-					<div class="col-12 mt-1 mb-4">
-						Template by <a href="https://www.medialoot.com">Medialoot</a>
-					</div>
-				</section>
-			</div>
-		</section>
-		</main>
-	</div>
+  								<h3 class="card-title">{{t 'site.calendar.title'}}</h3>
+  								<h6 class="card-subtitle mb-2 text-muted">{{t
+  									'site.calendar.description'}}</h6>
+  								<ul class="timeline">
+  									<li>
+  										<div class="timeline-badge">
+  											<em class="fa fa-camera"></em>
+  										</div>
+  										<div class="timeline-panel">
+  											<div class="timeline-heading">
+  												<h5 class="timeline-title mt-2">Annual Meeting</h5>
+  											</div>
+  											<div class="timeline-body">
+  												<p>Annual club meeting - Board of Directors Election etc
+  												</p>
+  											</div>
+  										</div>
+  									</li>
+  									<li>
+  										<div class="timeline-badge primary">
+  											<em class="fa fa-link"></em>
+  										</div>
+  										<div class="timeline-panel">
+  											<div class="timeline-heading">
+  												<h5 class="timeline-title mt-2">Spring Fly-in</h5>
+  											</div>
+  											<div class="timeline-body">
+  												<p>Spring Fly-in at Palomar...</p>
+  											</div>
+  										</div>
+  									</li>
+  									<li>
+  										<div class="timeline-badge">
+  											<em class="fa fa-paperclip"></em>
+  										</div>
+  										<div class="timeline-panel">
+  											<div class="timeline-heading">
+  												<h5 class="timeline-title mt-2">Site Maintenance Day</h5>
+  											</div>
+  											<div class="timeline-body">
+  												<p>Launch clearing, trail to head, windsock and weather
+  													station maintenance</p>
+  											</div>
+  										</div>
+  									</li>
+  								</ul>
+  							</div>
+  						</div>
+  					{{group-topics}}
+  					</div>
+  				</section>
+  				<section class="row">
+  					<div class="col-12 mt-1 mb-4">
+  						Template by <a href="https://www.medialoot.com">Medialoot</a>
+  					</div>
+  				</section>
+  			</div>
+  		</section>
+  		</main>
+  	</div>
+  </div>
+
+
+
+
+
+
+
+
+
+  <footer class="bg-dark text-white py-4">
+  	<div class="container">
+  		<div class="row">
+  			<div class="col-md-3 col-sm-6 pl-0">
+  				<ul class="nav flex-column">
+  					<li class="nav-item"><a href="#" class="nav-link">About</a></li>
+  					<li class="nav-item"><a href="#" class="nav-link">Services</a></li>
+  					<li class="nav-item"><a href="#" class="nav-link">Features</a></li>
+  					<li class="nav-item"><a href="#" class="nav-link">Team</a></li>
+  				</ul>
+  			</div>
+  			<div class="col-md-3 col-sm-6 pl-0">
+  				<ul class="nav flex-column">
+  					<li class="nav-item"><a href="#" class="nav-link">More</a></li>
+  					<li class="nav-item"><a href="#" class="nav-link">Support</a></li>
+  					<li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+  					<li class="nav-item"><a href="#" class="nav-link">Legal</a></li>
+  				</ul>
+  			</div>
+  			<div class="col-md-4 ml-auto text-right">
+  				<small class="text-uppercase">Connect on social media</small>
+  				<ul class="nav justify-content-end">
+  					<li class="nav-item"><a href="#" class="nav-link pr-0"><i
+  							class="fa fa-pinterest fa-lg"></i></a></li>
+  					<li class="nav-item"><a href="#" class="nav-link pr-0"><i
+  							class="fa fa-twitter fa-lg"></i></a></li>
+  					<li class="nav-item"><a href="#" class="nav-link pr-0"><i
+  							class="fa fa-instagram fa-lg"></i></a></li>
+  					<li class="nav-item"><a href="#" class="nav-link pr-0"><i
+  							class="fa fa-facebook fa-lg"></i></a></li>
+  					<li class="nav-item"><a href="#" class="nav-link pr-0"><i
+  							class="fa fa-skype fa-lg"></i></a></li>
+  				</ul>
+  			</div>
+  			<div class="col-12 text-right small">@2017 Company Name</div>
+  		</div>
+  	</div>
+  </footer>
 </div>
-
-
-
-
-
-
-
-
-
-<footer class="bg-dark text-white py-4">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-3 col-sm-6 pl-0">
-				<ul class="nav flex-column">
-					<li class="nav-item"><a href="#" class="nav-link">About</a></li>
-					<li class="nav-item"><a href="#" class="nav-link">Services</a></li>
-					<li class="nav-item"><a href="#" class="nav-link">Features</a></li>
-					<li class="nav-item"><a href="#" class="nav-link">Team</a></li>
-				</ul>
-			</div>
-			<div class="col-md-3 col-sm-6 pl-0">
-				<ul class="nav flex-column">
-					<li class="nav-item"><a href="#" class="nav-link">More</a></li>
-					<li class="nav-item"><a href="#" class="nav-link">Support</a></li>
-					<li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
-					<li class="nav-item"><a href="#" class="nav-link">Legal</a></li>
-				</ul>
-			</div>
-			<div class="col-md-4 ml-auto text-right">
-				<small class="text-uppercase">Connect on social media</small>
-				<ul class="nav justify-content-end">
-					<li class="nav-item"><a href="#" class="nav-link pr-0"><i
-							class="fa fa-pinterest fa-lg"></i></a></li>
-					<li class="nav-item"><a href="#" class="nav-link pr-0"><i
-							class="fa fa-twitter fa-lg"></i></a></li>
-					<li class="nav-item"><a href="#" class="nav-link pr-0"><i
-							class="fa fa-instagram fa-lg"></i></a></li>
-					<li class="nav-item"><a href="#" class="nav-link pr-0"><i
-							class="fa fa-facebook fa-lg"></i></a></li>
-					<li class="nav-item"><a href="#" class="nav-link pr-0"><i
-							class="fa fa-skype fa-lg"></i></a></li>
-				</ul>
-			</div>
-			<div class="col-12 text-right small">@2017 Company Name</div>
-		</div>
-	</div>
-</footer>
