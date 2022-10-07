@@ -1,10 +1,10 @@
-import DS from "ember-data";
+import JSONAPISerializer from "@ember-data/serializer/json-api";
 
-export default DS.JSONAPISerializer.extend({
-  keyForAttribute: function (attr) {
+export default class ApplicationSerializer extends JSONAPISerializer {
+  keyForAttribute(attr) {
     return attr;
-  },
+  }
   keyForRelationship(key) {
     return key;
-  },
-});
+  }
+}
