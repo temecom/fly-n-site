@@ -10,13 +10,15 @@
  * Class: Club
  */
 
-import DS from "ember-data";
+import { attr } from "@ember-data/model";
+import { belongsTo } from "@ember-data/model";
+import { hasMany } from "@ember-data/model";
 import FlynSiteEntity from "../models/fly-n-site-entity";
 
-export default FlynSiteEntity.extend({
-  emailAddress: DS.attr("string"),
-  webSiteUrl: DS.attr("string"),
-  facebookPage: DS.attr("string"),
-  memberships: DS.hasMany("membership", { async: true }),
-  postalAddress: DS.belongsTo("postalAddress"),
-});
+export default class Club extends FlynSiteEntity {
+  @attr("string") emailAddress;
+  @attr("string") webSiteUrl;
+  @attr("string") facebookPage;
+  @hasMany("membership", { async: true, inverse: null }) memberships;
+  @belongsTo("postalAddress", { async: true, inverse: null }) postalAddress;
+}

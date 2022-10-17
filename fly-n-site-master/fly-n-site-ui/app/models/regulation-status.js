@@ -1,6 +1,6 @@
-import DS from "ember-data";
+import { attr } from "@ember-data/model";
 import FlynSiteEntity from "../models/fly-n-site-entity";
 
-export default FlynSiteEntity.extend({
-  description: DS.attr("string"),
-});
+export default class RegulationStatus extends FlynSiteEntity {
+  @attr("string") description;
+}

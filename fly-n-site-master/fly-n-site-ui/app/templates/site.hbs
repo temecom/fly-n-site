@@ -1,28 +1,66 @@
 <!-- The site editor page -->
-{{site-menu
-	site = model.site
-	save=(action "save")
-	newMap=(action "newMap")
-	newMarker = (action "newMarker")
-}}
+
+
+<SiteMenuComponent 
+	@site = {{this.model.site}}
+	@save={{this.save}}
+	@newMap={{this.newMap}}
+	@newMarker = {{this.newMarker}}
+></SiteMenuComponent>
+			
+	
 {{#bs-accordion selected="1" as |acc|}}
 	{{#acc.item value="1"  title=(t "forms.map.title")}}
+<!--
+	<LeafletMap 
+	@lat={{this.model.site.map.siteMarker.location.latitude}}
+	@lng={{this.model.site.map.siteMarker.location.longitude}}
+	@zoom={{this.model.site.map.zoomLevel}}
+	as |layers|>
+</LeafletMap>
+-->
 
-			{{#g-map
-				lat=model.siteMarkerLocation.latitude
-				lng=model.siteMarkerLocation.longitude
-				zoom=model.map.zoomLevel
+	<GMap 
+	@lat={{this.model.site.map.siteMarker.location.latitude}}
+	@lng={{this.model.site.map.siteMarker.location.longitude}}
+	@zoom={{this.model.site.map.zoomLevel}}
+	as |map|>
+	<map.canvas />
+	<map.marker 
+		@label={{this.model.site.map.siteMarker.name}}
+		@lat={{this.model.site.map.siteMarker.location.latitude}}
+		@lng={{this.model.site.map.siteMarker.location.longitude}}
+		@draggable={{true}}
+		@onDragend=this.dragEnd
+		@onClick=(fn this.showMarkerEditor this.model.site.map.siteMarker)
+	/>
+	</GMap>
+<!--
+	{{#each this.model.site.map.markers as |marker|}}
+	<map.marker 
+	  @label=marker.name
+	  @lat=marker.location.latitude
+	  @lng=marker.location.longitude
+	  @draggable={{true}}
+	  @onDragend=this.dragEnd
+	@onClick=(fn this.showMarkerEditor marker)/>
+
+  {{/each}}
+		{{#g-map
+				lat=this.model.siteMarkerLocation.latitude
+				lng=this.model.siteMarkerLocation.longitude
+				zoom=this.model.map.zoomLevel
 				mapTypeId='terrain'
 				as |g| }}
 				{{g.canvas}}
 				{{g.marker
-			      label=model.siteMarker.name
-			      lat=model.siteMarkerLocation.latitude
-				lng=model.siteMarkerLocation.longitude
+			      label=this.model.siteMarker.name
+			      lat=this.model.siteMarkerLocation.latitude
+				lng=this.model.siteMarkerLocation.longitude
 			      draggable=true
 			      onDragend=(action "dragEnd")
-					  onClick=(action "showMarkerEditor" model.siteMarker)}}
-				{{#each model.map.markers as |marker|}}
+					  onClick=(action "showMarkerEditor" this.model.siteMarker)}}
+				{{#each this.model.map.markers as |marker|}}
 			    {{g.marker
 			      label=marker.name
 			      lat=marker.location.latitude
@@ -32,18 +70,17 @@
 					  onClick=(action "showMarkerEditor" marker)}}
 			  {{/each}}
 			{{/g-map}}
-
-			<!-- location -->
-			{{#bs-form formLayout=formLayout
-				model=model
+-->	
+			{{#bs-form formLayout=this.formLayout
+				model=this.model.site
 				onSubmit=(action "save") as |form|}}
 					{{form.element
-						property="siteMarkerLocation.latitude"
+						property="map.siteMarker.location.latitude"
 						placeholder=(t "forms.map.location.latitude")
 						label=(t "forms.map.location.latitude")
 					}}
 					{{form.element
-						property="siteMarkerLocation.longitude"
+						property="map.siteMarker.location.longitude"
 						placeholder=(t "forms.map.location.longitude")
 						label=(t "forms.map.location.longitude")
 					}}
@@ -56,11 +93,12 @@
 				{{/bs-form}}
 
 	{{/acc.item}}
+	
 	{{#acc.item value="2" title=(t "forms.common.identity")}}
 	<div class="card" id="siteModal">
 		<div class="card-body">
-		{{#bs-form formLayout=formLayout
-			model=model.site
+		{{#bs-form formLayout=this.formLayout
+			model=this.model.site
 			onSubmit=(action "save") as |form|}}
 				{{form.element
 					disabled=true
@@ -96,7 +134,7 @@
 	{{#acc.item value="3" title=(t "forms.common.predictor")}}
 	<div class="card" id="siteModal">
 		<div class="card-body">
-			{{flynsite-windgram key=model.site.windgramKey}}
+			<Windgram @key=this.model.site.windgramKey></Windgram>
 		</div>
 		<div class="card-footer">
 		{{#bs-dropdown as |dropdown|}}
@@ -114,15 +152,15 @@
 	</div>
 	</div>
 	{{/acc.item}}
-
-
 {{/bs-accordion}}
-{{site-menu
-	site = model.site
-	save=(action "save")
-	newMap=(action "newMap")
-	newMarker = (action "newMarker")
-}}
+
+<!-- location -->
+<SiteMenuComponent 
+	@site = {{this.model.site}}
+	@save={{this.save}}
+	@newMap={{this.newMap}}
+	@newMarker = {{this.newMarker}}
+></SiteMenuComponent>
 
 
 {{outlet}}

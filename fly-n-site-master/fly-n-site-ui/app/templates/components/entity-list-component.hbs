@@ -1,0 +1,17 @@
+<div class="card">
+	<div class="card-header">{{@title}}
+		<button type="button" class="btn btn-secondary" {{on "click" @createNewEntity}}>
+			{{t "user.new"}}
+		</button>
+	</div>
+	<div class="card-body">
+		<ul class="list-group">
+			{{#each @items as |item|}}
+			<li class="list-group-item list-group-item-action">
+				<a href="#" {{on "click" (fn @itemSelected item)}}>{{item.name}}</a>
+			</li>
+			{{/each}}
+		</ul>
+	</div>
+</div>
+{{yield}}

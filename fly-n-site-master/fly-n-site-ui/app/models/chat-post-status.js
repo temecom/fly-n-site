@@ -7,13 +7,13 @@
 
 /**
  * Generated On: 2017-8-15
- * Class: RatingType
+ * Class: ChatPostStatus
  */
 
-import DS from "ember-data";
+import { attr } from "@ember-data/model";
 import FlynSiteEntity from "../models/fly-n-site-entity";
 
-export default FlynSiteEntity.extend({
-  name: DS.attr("string"),
-  translationKey: DS.attr("string"),
-});
+export default class ChatPostStatus extends FlynSiteEntity {
+  @attr("string") name;
+  @attr("string") translationKey;
+}

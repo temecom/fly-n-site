@@ -1,27 +1,30 @@
-import Ember from "ember";
+import Controller from "@ember/controller";
+import { action } from "@ember/object";
 
-export default Ember.Controller.extend({
-  actions: {
-    save: function () {
-      var member = this.get("model.membership");
-      if (member.save) {
+/**
+ * Controller for Membership
+ */
+export default class MembershipController extends Controller {
+  // Actions
+  @action save() {
+    var member = this.model.membership;
+    if (member.save) {
+      member.save();
+    } else {
+      member.then(function (member) {
         member.save();
-      } else {
-        member.then(function (member) {
-          member.save();
-        });
-      }
-    },
-    clubSelected: function (club) {
-      var member = this.get("model.membership");
-      member.set("club", club);
-    },
-    personSelected: function (person) {
-      var member = this.get("model.membership");
-      member.set("person", person);
-    },
-    memebershipSelected: function (membership) {
-      this.set("selectedMembership", membership);
-    },
-  },
-});
+      });
+    }
+  }
+  @action clubSelected(club) {
+    var member = this.model.membership;
+    member.set("club", club);
+  }
+  @action personSelected(person) {
+    var member = this.model.membership;
+    member.set("person", person);
+  }
+  @action membershipSelected(membership) {
+    this.selectedMembership = membership;
+  }
+}

@@ -10,10 +10,10 @@
  * Class: Country
  */
 
-import DS from "ember-data";
+import { attr } from "@ember-data/model";
 import FlynSiteEntity from "../models/fly-n-site-entity";
 
-export default FlynSiteEntity.extend({
-  code: DS.attr("string"),
-  phoneCode: DS.attr("string"),
-});
+export default class Country extends FlynSiteEntity {
+  @attr("string") code;
+  @attr("string") phoneCode;
+}

@@ -10,20 +10,17 @@
  * Class: Person
  */
 
-import DS from "ember-data";
+import { attr } from "@ember-data/model";
+import { hasMany } from "@ember-data/model";
 import FlynSiteEntity from "../models/fly-n-site-entity";
-import { computed } from "@ember/object";
 
-export default FlynSiteEntity.extend({
-  givenName: DS.attr("string"),
-  surName: DS.attr("string"),
-  birthDate: DS.attr("date"),
-  contactMethods: DS.hasMany("contactMethod", { async: true }),
-  memberships: DS.hasMany("membership", { async: true }),
-  name: computed("surName", "givenName", function () {
-    let givenName = this.givenName;
-    let surName = this.surName;
-
-    return `${givenName} ${surName}`;
-  }),
-});
+export default class Person extends FlynSiteEntity {
+  @attr("string") givenName;
+  @attr("string") surName;
+  @attr("date") birthDate;
+  @hasMany("contactMethod", { async: true, inverse: null }) contactMethods;
+  @hasMany("membership", { async: true, inverse: null }) memberships;
+  get name() {
+    return `${this.givenName} ${this.surName}`;
+  }
+}

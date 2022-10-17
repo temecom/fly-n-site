@@ -31,11 +31,11 @@ module.exports = function (environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
     ENV["ember-google-maps"] = {
-      key: "YourGoogleAPIKey", // Using .env files in this example
+      key: "AIzaSyCXNGgvV817p5J82ZatEHeYJl0YJ3yzFnE", // Using .env files in this example
       language: "en",
       region: "US",
       protocol: "https",
-      version: "3.31",
+      version: "3.49",
       libraries: ["geometry"],
       // client: undefined,
       // channel: undefined,

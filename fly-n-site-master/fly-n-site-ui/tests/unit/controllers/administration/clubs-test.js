@@ -1,4 +1,4 @@
-import { moduleFor, test } from "ember-qunit";
+import { module, test } from "qunit";
 
 moduleFor(
   "controller:administration/clubs",

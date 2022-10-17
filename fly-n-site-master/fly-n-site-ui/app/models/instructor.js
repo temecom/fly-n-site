@@ -10,9 +10,9 @@
  * Class: Instructor
  */
 
-import DS from "ember-data";
+import { hasMany } from "@ember-data/model";
 import Pilot from "../models/pilot";
 
-export default Pilot.extend({
-  students: DS.belongsTo("pilot", { async: true }),
-});
+export default class Instructor extends Pilot {
+  @hasMany("pilot", { async: true, inverse: null }) students;
+}

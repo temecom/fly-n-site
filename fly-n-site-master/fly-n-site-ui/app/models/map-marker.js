@@ -10,10 +10,11 @@
  * Class: Rating
  */
 
-import DS from "ember-data";
+import { attr } from "@ember-data/model";
+import { belongsTo } from "@ember-data/model";
 import FlynSiteEntity from "../models/fly-n-site-entity";
 
-export default FlynSiteEntity.extend({
-  description: DS.attr("string"),
-  location: DS.belongsTo("Location"),
-});
+export default class MapMarker extends FlynSiteEntity {
+  @attr("string") description;
+  @belongsTo("Location", { async:  true }) location;
+}

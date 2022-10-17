@@ -10,10 +10,11 @@
  * Class: Pilot
  */
 
-import DS from "ember-data";
+import { belongsTo } from "@ember-data/model";
+import { hasMany } from "@ember-data/model";
 import Person from "../models/person";
 
-export default Person.extend({
-  ratings: undefined,
-  homeSite: DS.belongsTo("site", { async: true }),
-});
+export default class Pilot extends Person {
+  @hasMany("rating", { async: true, inverse: null } ) ratings;
+  @belongsTo("site", { async: true, inverse: null }) homeSite;
+}

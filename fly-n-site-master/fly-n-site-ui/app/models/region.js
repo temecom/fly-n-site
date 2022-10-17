@@ -10,10 +10,11 @@
  * Class: Region
  */
 
-import DS from "ember-data";
+import { attr } from "@ember-data/model";
+import { belongsTo } from "@ember-data/model";
 import FlynSiteEntity from "../models/fly-n-site-entity";
 
-export default FlynSiteEntity.extend({
-  country: DS.belongsTo("country", { async: true }),
-  code: DS.attr("string"),
-});
+export default class Region extends FlynSiteEntity {
+  @belongsTo("country", { async: true, inverse: null }) country;
+  @attr("string") code;
+}

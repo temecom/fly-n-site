@@ -10,22 +10,22 @@
  * Class: ClubMember
  */
 
-import DS from "ember-data";
+import { attr } from "@ember-data/model";
+import { belongsTo } from "@ember-data/model";
 import FlynSiteEntity from "../models/fly-n-site-entity";
-import { computed } from "@ember/object";
 const separator = "-";
-export default FlynSiteEntity.extend({
-  joined: DS.attr("date"),
-  renewal: DS.attr("date"),
-  membershipId: DS.attr("string"),
-  person: DS.belongsTo("person"),
-  club: DS.belongsTo("club"),
-  name: computed("club.name", "membershipId", "person", function () {
-    var clubName = this.get("club.name");
+export default class Membership extends FlynSiteEntity {
+  @attr("date") joined;
+  @attr("date") renewal;
+  @attr("string") membershipId;
+  @belongsTo("person", { async: true, inverse: null } ) person;
+  @belongsTo("club", { async: true, inverse: null } ) club;
+  get name () {
+    var clubName = this.club.name;
     var membershipId = this.membershipId;
     var person = this.person;
-    var surname = person.get("surName");
-    var givenName = person.get("givenName");
+    var surname = person.surName;
+    var givenName = person.givenName;
     var name = "";
     if (clubName) {
       name = clubName;
@@ -34,5 +34,5 @@ export default FlynSiteEntity.extend({
       name = name + separator + givenName + " " + surname;
     }
     return name + separator + membershipId;
-  }),
-});
+  }
+}

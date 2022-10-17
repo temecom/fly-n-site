@@ -1,28 +1,32 @@
 import Controller from "@ember/controller";
-export default Controller.extend({
-  actions: {
-    membershipSelected: function (membership) {
-      this.transitionToRoute("membership", membership.get("id"));
-    },
-    newMembership: function () {
-      var self = this;
-      var membership = this.store.createRecord("membership");
-      membership.save().then(function (membership) {
-        self.transitionToRoute("membership", membership);
-      });
-    },
-    saveMembership: function () {
-      var membership = this.get("model.membership");
-      if (membership.save) {
+import { action } from "@ember/object";
+/**
+ * Controller for Memberships
+ */
+
+export default class MembershipsController extends Controller {
+  // Actions
+  @action membershipSelected(membership) {
+    this.transitionToRoute("membership", membership.get("id"));
+  }
+  @action newMembership() {
+    var self = this;
+    var membership = this.store.createRecord("membership");
+    membership.save().then(function (membership) {
+      self.transitionToRoute("membership", membership);
+    });
+  }
+  @action saveMembership() {
+    var membership = this.model.membership;
+    if (membership.save) {
+      membership.save();
+    } else {
+      membership.then(function (membership) {
         membership.save();
-      } else {
-        membership.then(function (membership) {
-          membership.save();
-        });
-      }
-    },
-    countrySelected: function (countryName) {
-      this.sendAction("countrySelected", countryName);
-    },
-  },
-});
+      });
+    }
+  }
+  @action countrySelected(countryName) {
+    //this.sendAction("countrySelected", countryName);
+  }
+}

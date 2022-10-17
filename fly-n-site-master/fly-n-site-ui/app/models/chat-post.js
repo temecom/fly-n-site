@@ -10,11 +10,12 @@
  * Class: Site
  */
 
-import DS from "ember-data";
+import { attr } from "@ember-data/model";
+import { belongsTo } from "@ember-data/model";
 import FlynSiteEntity from "../models/fly-n-site-entity";
-export default FlynSiteEntity.extend({
-  text: DS.attr("string"),
-  status: DS.belongsTo("ChatPostStatus"),
-  posted: DS.attr("date"),
-  postedBy: DS.belongsTo("Person"),
-});
+export default class ChatPosts extends FlynSiteEntity {
+  @attr("string") text;
+  @belongsTo("ChatPostStatus", { async: true, inverse: null }) status;
+  @attr("date") posted;
+  @belongsTo("Person", { async: true, inverse: null }) postedBy;
+}

@@ -10,10 +10,11 @@
  * Class: Phone
  */
 
-import DS from "ember-data";
+import { attr } from "@ember-data/model";
+import { belongsTo } from "@ember-data/model";
 import ContactMethod from "../models/contact-method";
 
-export default ContactMethod.extend({
-  number: DS.attr("string"),
-  country: undefined,
-});
+export default class Phone extends ContactMethod {
+  @attr("string") number;
+  @belongsTo("country", { async: true, inverse: null }) country;
+}

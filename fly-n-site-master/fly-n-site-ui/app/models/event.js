@@ -1,8 +1,9 @@
-import DS from "ember-data";
+import { attr } from "@ember-data/model";
+import { belongsTo } from "@ember-data/model";
 
 import FlynSiteEntity from "../models/fly-n-site-entity";
-export default FlynSiteEntity.extend({
-  startDateAndTime: DS.attr("date"),
-  endDateAndTime: DS.attr("date"),
-  location: DS.belongsTo("Location"),
-});
+export default class Event extends FlynSiteEntity {
+  @attr("date") startDateAndTime;
+  @attr("date") endDateAndTime;
+  @belongsTo("Location", { async:  true }) location;
+}

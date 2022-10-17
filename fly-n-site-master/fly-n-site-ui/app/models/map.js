@@ -10,12 +10,14 @@
  * Class: Site
  */
 
-import DS from "ember-data";
+import { attr } from "@ember-data/model";
+import { belongsTo } from "@ember-data/model";
+import { hasMany } from "@ember-data/model";
 import FlynSiteEntity from "../models/fly-n-site-entity";
-export default FlynSiteEntity.extend({
-  zoomLevel: DS.attr("number"),
-  mapTypeId: DS.attr("string"),
-  description: DS.attr("string"),
-  markers: DS.hasMany("MapMarker"),
-  siteMarker: DS.belongsTo("MapMarker"),
-});
+export default class Map extends FlynSiteEntity {
+  @attr("number") zoomLevel;
+  @attr("string") mapTypeId;
+  @attr("string") description;
+  @hasMany("MapMarker", { async: true, inverse: null }) markers;
+  @belongsTo("MapMarker", { async: true, inverse: null }) siteMarker;
+}

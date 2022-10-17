@@ -1,11 +1,9 @@
-import DS from "ember-data";
-
-export default DS.Transform.extend({
-  deserialize: function (serialized) {
+import Transform from "@ember-data/serializer/transform";
+export default class RawTransform extends Transform {
+  deserialize(serialized) {
     return serialized;
-  },
-
-  serialize: function (deserialized) {
+  }
+  serialize(deserialized) {
     return deserialized;
-  },
-});
+  }
+}

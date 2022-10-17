@@ -10,8 +10,9 @@
  * Class: FlynSiteEntity
  */
 
-import DS from "ember-data";
-export default DS.Model.extend({
-  name: DS.attr("string"),
-  updateTime: DS.attr("date"),
-});
+import Model from "@ember-data/model";
+import { attr } from "@ember-data/model";
+export default class FlyNSiteEntity extends Model {
+  @attr("string") name;
+  @attr("date") updateTime;
+}

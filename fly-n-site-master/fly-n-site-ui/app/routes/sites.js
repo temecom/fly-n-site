@@ -1,10 +1,10 @@
 import Route from "@ember/routing/route";
 import { service } from "@ember/service";
-import { hash } from "rsvp";
+import RSVP from "rsvp";
 export default class SitesRoute extends Route {
   @service store;
   model() {
-    return hash({
+    return RSVP.hash({
       sites: this.store.findAll("site"),
       countries: this.store.findAll("country"),
     });

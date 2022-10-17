@@ -10,11 +10,12 @@
  * Class: Rating
  */
 
-import DS from "ember-data";
+import { attr } from "@ember-data/model";
+import { belongsTo } from "@ember-data/model";
 import FlynSiteEntity from "../models/fly-n-site-entity";
 
-export default FlynSiteEntity.extend({
-  ratingType: DS.belongsTo("rating-type", { async: true }),
-  issued: DS.attr("date"),
-  issuedBy: DS.belongsTo("instructor", { async: true }),
-});
+export default class Rating extends FlynSiteEntity {
+  @belongsTo("rating-type", { async: true, inverse: null }) ratingType;
+  @attr("date") issued;
+  @belongsTo("instructor", { async: true, inverse: null }) issuedBy;
+}

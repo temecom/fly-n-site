@@ -10,9 +10,9 @@
  * Class: EMail
  */
 
-import DS from "ember-data";
+import { attr } from "@ember-data/model";
 import ContactMethod from "../models/contact-method";
 
-export default ContactMethod.extend({
-  address: DS.attr("string"),
-});
+export default class EMail extends ContactMethod {
+  @attr("string") address;
+}
