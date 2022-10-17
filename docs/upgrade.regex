@@ -1,10 +1,113 @@
+# Controller headers
+import Controller from "@ember/controller";
+import { action } from "@ember/object";
+/**
+ * Controller for Sites
+ */
+
+#Route headers
+import Route from "@ember/routing/route";
+import { service } from "@ember/service";
+import RSVP from "rsvp";
+/**
+* Route for Sites
+*/
+
+#Model headers
+import { attr } from "@ember-data/model";
+import { belongsTo } from "@ember-data/model";
+import { hasMany } from "@ember-data/model";
+import FlynSiteEntity from "../models/fly-n-site-entity";
+
+#DS 
+import DS from "ember-data";
+
+#Test headers 
+
+import \{ moduleFor, test \} from "ember-qunit";
+import { module, test } from "qunit";
+
+import { attr } from "@ember-data/model";
+import { belongsTo } from "@ember-data/model";
+import { hasMany } from "@ember-data/model";
+
 # Belongs to
 (\w*): belongsTo\("(\w*)"\),
 @belongsTo($2) $1;
+
+#With async 
+(\w*): DS\.belongsTo\("(\w*)", \{ async: (\w*) \}\),
+@belongsTo("$2", { async: $3 }) $1;
+
+# Has hasMany with async
+(\w*): DS\.hasMany\("(\w*)", \{ async: (\w*) \}\),
+@hasMany("$2", { async: $3 }) $1;
 
 #LinkTo
 \{\{#link-to\s?("\w*")\}\}
 <LinkTo @route=$1>
 
+#{{link-to}}
 \{\{/link-to\}\}
 </LinkTo>
+
+#attr
+(\w*):\s?DS.attr\("(\w*)"\),
+@attr("$2") $1;
+
+#actions: {}
+actions:\s?\{
+// Actions
+
+# Trailing comma
+\},
+}
+# Functions
+(\w*):\s?function\s?\((\w*)\)
+@action $1($2)
+
+#Model
+model:\s?function\s?\((\w*)\)
+model($1)
+
+#Class declaration
+Ember\.Controller\.extend\(
+class <name> extends Controller 
+
+#Variables
+(\w*):\s?(\w*),
+$1 = $2;
+
+#Get
+this.get\("([A-z.]*)"\)
+this.$1
+
+#Set
+this.set\("([A-z.]*)"\s?,\s?\w*\)
+this.$1 = $2
+
+#rsvpHash
+rsvpHash
+RSVP.hash
+
+#EntityListComponent
+\{\{entity-list
+<EntityListComponent 
+
+items=([A-z.]*)
+@items={{this.$1}}
+
+itemSelected=\(action "([A-z.]*)"\)
+
+    @itemSelected={{this.$1}}
+
+title=\(t\s*"([A-z.]*)"\)
+
+    @title={{t $1}}
+
+newEntity=\(action "([A-z.]*)"\)
+
+    @newEntity={{this.$1}}
+
+\{\s?async:\s?(\w*)\s?\}
+{ async: true, inverse: null }

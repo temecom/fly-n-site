@@ -22,6 +22,3 @@ RUN . /etc/os-release \
 
 # [Optional] Uncomment if you want to install more global node modules
 RUN su node -c "npm install -g ember-cli"
-
-
-

@@ -14,7 +14,6 @@ var Schema = mongoose.Schema;
 var options = {discriminatorKey: '_class'};
 var FlynSiteEntitySchema = new Schema({
 
-    _id: String,
     name: String,
     updateTime: Date
 
