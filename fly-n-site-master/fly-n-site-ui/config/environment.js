@@ -40,7 +40,7 @@ module.exports = function (environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
     ENV['ember-google-maps'] = {
-      key: ENV['GOOGLE_API_KEY'], // Using .env files in this example
+      key: ENV['GOOGLE_MAPS_API_KEY'], // Using .env files in this example
       language: 'en',
       region: 'US',
       protocol: 'https',
