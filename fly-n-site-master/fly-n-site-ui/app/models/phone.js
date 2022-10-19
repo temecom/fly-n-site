@@ -1,22 +1,20 @@
 //app/models/phone
 
 /*
-* (C)  Copyright 2017, FlynSite.  
- * All rights reserved 
-*/
+ * (C)  Copyright 2017, FlynSite.
+ * All rights reserved
+ */
 
 /**
-* Generated On: 2017-8-15
-* Class: Phone
-*/
+ * Generated On: 2017-8-15
+ * Class: Phone
+ */
 
-import DS from 'ember-data';
-import ContactMethod from '../models/contact-method';
+import { attr } from "@ember-data/model";
+import { belongsTo } from "@ember-data/model";
+import ContactMethod from "../models/contact-method";
 
-export default ContactMethod.extend({
-
-    number: DS.attr('string'),
-    country: undefined
-
-
-});
+export default class Phone extends ContactMethod {
+  @attr("string") number;
+  @belongsTo("country", { async: true, inverse: null }) country;
+}

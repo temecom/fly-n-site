@@ -1,19 +1,19 @@
 //app/models/country
 
 /*
-* (C)  Copyright 2017, FlynSite.  
- * All rights reserved 
-*/
+ * (C)  Copyright 2017, FlynSite.
+ * All rights reserved
+ */
 
 /**
-* Generated On: 2017-8-15
-* Class: Country
-*/
+ * Generated On: 2017-8-15
+ * Class: Country
+ */
 
-import DS from 'ember-data';
-import FlynSiteEntity from '../models/flyn-site-entity';
+import { attr } from "@ember-data/model";
+import FlynSiteEntity from "../models/fly-n-site-entity";
 
-export default FlynSiteEntity.extend({
-    code: DS.attr('string'),
-    phoneCode: DS.attr('string')
-});
+export default class Country extends FlynSiteEntity {
+  @attr("string") code;
+  @attr("string") phoneCode;
+}

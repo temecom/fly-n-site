@@ -1,23 +1,23 @@
 //app/models/postaladdress
 
 /*
-* (C)  Copyright 2017, FlynSite.  
- * All rights reserved 
-*/
+ * (C)  Copyright 2017, FlynSite.
+ * All rights reserved
+ */
 
 /**
-* Generated On: 2017-8-15
-* Class: PostalAddress
-*/
+ * Generated On: 2017-8-15
+ * Class: PostalAddress
+ */
 
-import DS from 'ember-data';
-import ContactMethod from '../models/contact-method';
+import { attr } from "@ember-data/model";
+import { belongsTo } from "@ember-data/model";
+import ContactMethod from "../models/contact-method";
 
-export default ContactMethod.extend({
-
-    street: DS.attr('string'),
-    city: DS.attr('string'),
-    postalCode: DS.attr('string'),
-    region: DS.belongsTo('region'),
-    country: DS.belongsTo('country')
-});
+export default class PostalAddress extends ContactMethod {
+  @attr("string") street;
+  @attr("string") city;
+  @attr("string") postalCode;
+  @belongsTo("region", { async: true, inverse: null } ) region;
+  @belongsTo("country", { async: true, inverse: null } ) country;
+}

@@ -1,15 +1,22 @@
-/* eslint-env node */
-'use strict';
+"use strict";
 
-const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+const EmberApp = require("ember-cli/lib/broccoli/ember-app");
 
-module.exports = function(defaults) {
+module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
-    'ember-bootstrap': {
-      'bootstrapVersion': 4,
-      'importBootstrapFont': false,
-      'importBootstrapCSS': false
-    }
+    "ember-bootstrap": {
+      bootstrapVersion: 5,
+      importBootstrapCSS: false,
+    },
+    fingerprint: {
+      exclude: [
+        "images/layers-2x.png",
+        "images/layers.png",
+        "images/marker-icon-2x.png",
+        "images/marker-icon.png",
+        "images/marker-shadow.png",
+      ],
+    },
   });
 
   // Use `app.import` to add additional libraries to the generated

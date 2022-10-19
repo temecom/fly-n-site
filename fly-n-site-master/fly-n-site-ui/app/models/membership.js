@@ -1,8 +1,8 @@
 //app/models/clubmember
 
 /*
- * (C)  Copyright 2017, FlynSite.  
- * All rights reserved 
+ * (C)  Copyright 2017, FlynSite.
+ * All rights reserved
  */
 
 /**
@@ -10,25 +10,29 @@
  * Class: ClubMember
  */
 
-import DS from 'ember-data';
-import FlynSiteEntity from '../models/flyn-site-entity';
-import { computed } from '@ember/object';
-export default FlynSiteEntity.extend({
-
-	joined: DS.attr('date'),
-	renewal: DS.attr('date'),
-	membershipId: DS.attr('string'),
-	person: DS.belongsTo('person',{async:true}),
-	club: DS.belongsTo('club', {async:true, embedded:true}),
-	name: computed('membershipId','person', function() {
-		var membershipId = this.get('membershipId');
-		var person = this.get('person');
-		var surname=person.get('surName');
-		var givenName=person.get('givenName');
-		if (surname) {
-			return membershipId + '-' + givenName + ' ' + surname ;
-		} else {
-			return membershipId;
-		}
-	})
-});
+import { attr } from "@ember-data/model";
+import { belongsTo } from "@ember-data/model";
+import FlynSiteEntity from "../models/fly-n-site-entity";
+const separator = "-";
+export default class Membership extends FlynSiteEntity {
+  @attr("date") joined;
+  @attr("date") renewal;
+  @attr("string") membershipId;
+  @belongsTo("person", { async: true, inverse: null } ) person;
+  @belongsTo("club", { async: true, inverse: null } ) club;
+  get name () {
+    var clubName = this.club.name;
+    var membershipId = this.membershipId;
+    var person = this.person;
+    var surname = person.surName;
+    var givenName = person.givenName;
+    var name = "";
+    if (clubName) {
+      name = clubName;
+    }
+    if (surname) {
+      name = name + separator + givenName + " " + surname;
+    }
+    return name + separator + membershipId;
+  }
+}

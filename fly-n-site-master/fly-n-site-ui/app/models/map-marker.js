@@ -1,19 +1,20 @@
 //app/models/rating
 
 /*
-* (C)  Copyright 2017, FlynSite.  
- * All rights reserved 
-*/
+ * (C)  Copyright 2017, FlynSite.
+ * All rights reserved
+ */
 
 /**
-* Generated On: 2017-8-15
-* Class: Rating
-*/
+ * Generated On: 2017-8-15
+ * Class: Rating
+ */
 
-import DS from 'ember-data';
-import FlynSiteEntity from '../models/flyn-site-entity';
+import { attr } from "@ember-data/model";
+import { belongsTo } from "@ember-data/model";
+import FlynSiteEntity from "../models/fly-n-site-entity";
 
-export default FlynSiteEntity.extend({
-	description: DS.attr('string'),
-	location: DS.belongsTo('Location')
-});
+export default class MapMarker extends FlynSiteEntity {
+  @attr("string") description;
+  @belongsTo("Location", { async:  true }) location;
+}

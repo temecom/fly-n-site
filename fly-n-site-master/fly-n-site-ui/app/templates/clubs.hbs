@@ -1,4 +1,7 @@
-{{entity-list items=model.clubs title=(t "site.clubs") itemSelected=(action "clubSelected") newEntity=(action "newClub")}}
-
-
+<EntityListComponent
+    @items={{this.model.clubs}}
+    @title={{t site.clubs}} 
+    @itemSelected={{this.clubSelected}} 
+    @newEntity={{this.newClub}}
+></EntityListComponent>
 {{outlet}}

@@ -1,0 +1,31 @@
+
+{{#bs-accordion as |itemAccordian|}}
+	{{#itemAccordian.item value="99" title=(t "forms.membership.editor")}}
+	<div class="card" id="personModal">
+		<div class="card-body">
+	{{#bs-form formLayout=formLayout
+		model=membership
+		onSubmit=(action "save") as |form|}}
+			{{form.element
+				disabled=true
+				property="id"
+				placeholder=(t "forms.common.id")
+				label=(t "forms.common.id")
+			}}
+			{{form.element
+				disabled=true
+				property="name"
+				placeholder=(t "forms.common.name")
+				label=(t "forms.common.name")
+			}}
+			{{form.element
+				property="membershipId"
+				placeholder=(t "forms.membership.membershipId")
+				label=(t "forms.membership.membershipId")
+			}}
+		{{/bs-form}}
+	</div>
+</div>
+	{{/itemAccordian.item}}
+	{{/bs-accordion}}
+{{yield}}

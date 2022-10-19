@@ -1,30 +1,26 @@
 //app/models/person
 
 /*
-* (C)  Copyright 2017, FlynSite.  
- * All rights reserved 
-*/
+ * (C)  Copyright 2017, FlynSite.
+ * All rights reserved
+ */
 
 /**
-* Generated On: 2017-8-15
-* Class: Person
-*/
+ * Generated On: 2017-8-15
+ * Class: Person
+ */
 
-import DS from 'ember-data';
-import FlynSiteEntity from '../models/flyn-site-entity';
-import { computed } from '@ember/object';
+import { attr } from "@ember-data/model";
+import { hasMany } from "@ember-data/model";
+import FlynSiteEntity from "../models/fly-n-site-entity";
 
-export default FlynSiteEntity.extend({
-
-    givenName: DS.attr('string'),
-    surName: DS.attr('string'),
-    birthDate: DS.attr('date'),
-    contactMethods: DS.hasMany('contactMethod',{async:true}),
-    name: computed('surName', 'givenName', function() {
-        let givenName = this.get('givenName');
-        let surName = this.get('surName');
-
-        return `${givenName} ${surName}`;
-      })
-
-});
+export default class Person extends FlynSiteEntity {
+  @attr("string") givenName;
+  @attr("string") surName;
+  @attr("date") birthDate;
+  @hasMany("contactMethod", { async: true, inverse: null }) contactMethods;
+  @hasMany("membership", { async: true, inverse: null }) memberships;
+  get name() {
+    return `${this.givenName} ${this.surName}`;
+  }
+}

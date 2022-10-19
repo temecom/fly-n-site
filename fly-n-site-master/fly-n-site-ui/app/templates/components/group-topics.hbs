@@ -1,4 +1,4 @@
-
+<GroupTopicsComponent>
   <div class="card-block">
     <h3 class="card-title">{{t 'site.groupTopics.title'}}</h3>
     <div class="dropdown card-title-btn-container">
@@ -19,7 +19,7 @@
     </div>
     <h6 class="card-subtitle mb-2 text-muted">{{t 'site.groupTopics.description'}}</h6>
     <ul class="todo-list mt-2">
-      {{#each chatRooms as |chatRoom|}}
+      {{#each this.chatRooms as |chatRoom|}}
       <li class="todo-list-item">
         <div class="checkbox mt-1 mb-2">
           <label class="custom-control custom-checkbox"> <input
@@ -45,3 +45,4 @@
   </div>
 
 {{yield}}
+</GroupTopicsComponent>

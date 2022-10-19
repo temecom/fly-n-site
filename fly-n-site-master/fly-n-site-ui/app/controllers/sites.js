@@ -1,37 +1,22 @@
-import Ember from 'ember';
+import Controller from "@ember/controller";
+import { action } from "@ember/object";
+/**
+ * The controller for Sites
+ */
+export default class SitesController extends Controller {
+  @action
+  siteSelected(site) {
+    this.transitionToRoute("site", site.get("id"));
+  }
 
-export default Ember.Controller.extend({
-	actions: {
-		siteSelected: function(site) {
-			this.transitionToRoute("site", site.get('id'));
-		},
-		newSite: function() {
-			var self = this;
-			var site = this.store.createRecord('site');
-			site.save()
-			.then(function(site){
-				self.showSiteModal(site);		
-			});
-		},
-		saveSite: function() {
-			var site = this.get('model.site');
-			if (site.save) {
-				site.save();
-			} else {
-			
-				site.then(function(site){
-					site.save();
-				});
-			}
-			
-		}
-	},
-	/**
-	 * Pop the site modal
-	 */
-	showSiteModal(site) {
-		var self = this;
-		self.set('model.site',site);
-		Ember.$("#siteModal").modal();
-	}
-});
+  @action
+  newSite() {
+    var self = this;
+    var site = this.store.createRecord("site", {
+      name: "New Site - " + this.model.sites.length,
+    });
+    site.save().then(function (site) {
+      self.transitionToRoute("site", site.get("id"));
+    });
+  }
+}

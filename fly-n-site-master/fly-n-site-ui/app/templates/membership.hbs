@@ -5,58 +5,58 @@
 			<div class="btn-group collapsed">
 				<button type="button" class="btn btn-secondary"
 					data-dismiss="modal">{{t "user.close"}}</button>
-				<button id="saveButton" 
+				<button id="saveButton"
 					class="btn btn-primary"
 					{{action "save"}} data-dismiss="modal" >{{t "user.save"}}</button>
-								
+
 			</div>
 		</div>
 	</div>
-{{#bs-accordion as |acc|}}	
+{{#bs-accordion as |acc|}}
 	{{#acc.item value="1" title=(t "forms.common.general")}}
 	<div class="card" id="membershipModal">
 		<div class="card-body">{{#bs-form formLayout=formLayout
-			model=model.membership 
-			onSubmit=(action "save") as |form|}} 
+			model=model.membership
+			onSubmit=(action "save") as |form|}}
 				{{form.element
 					property="id" 
-					placeholder=(t "forms.common.id") 
+					placeholder=(t "forms.common.id")
 					label=(t "forms.common.id")
-				}} 
-				{{form.element 
-					property="membershipId" 
-					placeholder=(t "forms.common.membershipId") 
+				}}
+				{{form.element
+					property="membershipId"
+					placeholder=(t "forms.common.membershipId")
 					label=(t "forms.common.membershipId")
-				}} 
-			
-				
-				{{fns-dropdown 
-					items=model.people 
+				}}
+
+
+				{{fns-dropdown
+					items=model.people
 					value=model.membership.person
 					listLabel=(t "site.people")
-					label=(t "site.person") 
+					label=(t "site.person")
 					itemSelected=(action "personSelected")
 					}}
-				
-				{{fns-dropdown 
-					items=model.clubs 
+
+				{{fns-dropdown
+					items=model.clubs
 					value=model.membership.club
-					listLabel=(t "site.clubs") 
-				label=(t "site.club") 
+					listLabel=(t "site.clubs")
+				label=(t "site.club")
 				itemSelected=(action "clubSelected")
 				}}
-					
+
 				{{form.element
 					type="date"
-					property="joined" 
+					property="joined"
 					placeholder=(t "forms.common.joinDate")
 					label=(t "forms.common.joinDate")
 				}}
 				{{form.element
-					property="renewal" 
+					property="renewal"
 					placeholder=(t "forms.common.renewalDate")
 					label=(t "forms.common.renewalDate")
-				}} 
+				}}
 			{{/bs-form}}
 		</div>
 
@@ -69,10 +69,10 @@
 		<div class="btn-group collapsed">
 			<button type="button" class="btn btn-secondary"
 				data-dismiss="modal">{{t "user.close"}}</button>
-			<button id="saveButton" 
+			<button id="saveButton"
 				class="btn btn-primary"
 				{{action "save"}} data-dismiss="modal" >{{t "user.save"}}</button>
-							
+
 		</div>
 	</div>
 </div>

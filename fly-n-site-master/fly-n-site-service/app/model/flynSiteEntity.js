@@ -1,4 +1,4 @@
-//app/model/flyn-site-entity
+//app/model/fly-n-site-entity
 
 /*
 * (C)  Copyright 2017,  FlyNSite  
@@ -14,7 +14,6 @@ var Schema = mongoose.Schema;
 var options = {discriminatorKey: '_class'};
 var FlynSiteEntitySchema = new Schema({
 
-    _id: String,
     name: String,
     updateTime: Date
 

@@ -1,12 +1,16 @@
-import { moduleFor, test } from 'ember-qunit';
+import { module, test } from "qunit";
 
-moduleFor('controller:administration/clubs', 'Unit | Controller | administration/clubs', {
-  // Specify the other units that are required for this test.
-  // needs: ['controller:foo']
-});
+moduleFor(
+  "controller:administration/clubs",
+  "Unit | Controller | administration/clubs",
+  {
+    // Specify the other units that are required for this test.
+    // needs: ['controller:foo']
+  }
+);
 
 // Replace this with your real tests.
-test('it exists', function(assert) {
+test("it exists", function (assert) {
   let controller = this.subject();
   assert.ok(controller);
 });

@@ -1,4 +1,8 @@
-{{entity-list items=model.people title=(t "site.people") itemSelected=(action "personSelected") newEntity=(action "newPerson")}}
 
-
+<EntityListComponent  
+@items={{this.model.people}} 
+    @title={{t "site.people"}} 
+    @itemSelected={{this.personSelected}} 
+    @newEntity={{this.newPerson}}
+></EntityListComponent>
 {{outlet}}
